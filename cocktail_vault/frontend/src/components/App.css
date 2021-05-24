@@ -1,15 +1,16 @@
-body, html {
-    background-color: black;
-    margin: 0;
-    padding: 0;
-    min-width: fit-content;
+body,
+html {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  min-width: fit-content;
 }
 
 .App {
-    min-height: 100vh;
-    max-width: 1280px;
-    min-width: 320px;
-    margin: 0 auto 0 auto;
-    background-color: #0a0a0a;
-    position: relative;
+  min-height: 100vh;
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto 0 auto;
+  background-color: #0a0a0a;
+  position: relative;
 }

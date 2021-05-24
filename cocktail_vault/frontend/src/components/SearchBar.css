@@ -1,18 +1,18 @@
-.SearchBar{
-    height: 50px;
-    border-color: #f8893a;
-    border-width: 3px;
-    border-radius: 6px;
-    border-style: solid;
-    background-color: #090905;
-    box-sizing: border-box;
-    font-family: "Mukta" ;
-    font-size: 27px;
-    font-weight: 200;
-    color: white;
+.SearchBar {
+  height: 50px;
+  border-color: #f8893a;
+  border-width: 3px;
+  border-radius: 6px;
+  border-style: solid;
+  background-color: #090905;
+  box-sizing: border-box;
+  font-family: "Mukta";
+  font-size: 27px;
+  font-weight: 200;
+  color: white;
 }
 
-.SearchBar::placeholder{
-    color: rgba(255, 255, 255, 0.46);
-    padding-left: 20px;
+.SearchBar::placeholder {
+  color: rgba(255, 255, 255, 0.46);
+  padding-left: 20px;
 }

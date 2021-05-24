@@ -1,27 +1,27 @@
-.RecommendedCard{
-    display: flex;
-    flex-direction: column-reverse;
-    width: 238px;
-    height: 238px;
-    border-radius: 6px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.RecommendedCard {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 238px;
+  height: 238px;
+  border-radius: 6px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.RecommendedCard-title{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(25, 25, 25, 0.6);
-    height: 70px;
+.RecommendedCard-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(25, 25, 25, 0.6);
+  height: 70px;
 }
 
-.RecommendedCard-title span{
-    width: 100%;
-    text-align: center;
-    font-family: "Mukta";
-    font-weight: 200;
-    font-size: 30px;
-    color: #edddd1;
+.RecommendedCard-title span {
+  width: 100%;
+  text-align: center;
+  font-family: "Mukta";
+  font-weight: 200;
+  font-size: 30px;
+  color: #edddd1;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import ItemCard from "./ItemCard";
-import './ExplorePage.css'
+import "./ExplorePage.css";
 
 const sample_cocktail = {
   name: "Rusty Nail",
@@ -11,7 +11,7 @@ const sample_cocktail = {
     { name: "Scotch", hasKind: false },
     { name: "Whisky", hasKind: false },
   ],
-  image: 'https://picsum.photos/500'
+  image: "https://picsum.photos/500",
 };
 
 const sample_inventory = [
