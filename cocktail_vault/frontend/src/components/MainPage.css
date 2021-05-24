@@ -1,0 +1,119 @@
+h2 {
+    font-family: 'Mukta';
+    color: #fef3eb;
+    font-weight: 200;
+    font-size: 37.5px;
+    margin: 20px 0 20px;
+}
+
+.MainPage-top {
+    background-size: 110%;
+    background-repeat: no-repeat;
+    height: calc(min(1280px, 100vw) * 0.59);
+    background-position: top left;
+}
+
+.MainPage-searchSection {
+    padding: 0;
+    position: absolute;
+    top: 266px;
+    left: 157px;
+    width: 530px;
+    height: 300px;
+    background-color: rgba(0,0,0,0.34)
+}
+
+.MainPage-coverText {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 45px;
+    font-weight: 500;
+    color: #fef3eb;
+}
+
+.SearchBar {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.MainPage-bottom {
+    padding: 0 5%;
+}
+
+.MainPage-recommended {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: -10px -5px -10px -5px;
+}
+
+.RecommendedCard {
+    margin: 10px 5px 10px 5px;
+}
+
+@media only screen and (max-width: 1186px) {
+    .MainPage-top{
+        background-size: 120%;
+        height: calc(100vw * 1.2 * 0.59);        
+    }
+    .MainPage-coverText {
+        left: 120px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .MainPage-searchSection {
+        left: 65px;
+    }
+}
+
+@media only screen and (max-width: 905px) {
+    .MainPage-top{
+        height: 641px;        
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .MainPage-top{
+        background-size: 180%;
+        background-position: 70% -20%;
+        box-shadow:inset 0 0 0 150vw rgba(0,0,0,0.5);
+        height: calc(100vw * 1.8 * 0.59); 
+    }
+
+    .MainPage-searchSection {
+        width: 370px;
+        top: 200px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        background-color: transparent;
+    }
+
+    .MainPage-coverText {
+        font-size: 33px;
+    }
+
+    .SearchBar {
+        margin-top: 30px;
+    }
+
+    .MainPage-recommended {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .RecommendedCard {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .MainPage-top{
+        height: 470px;
+    }
+}
