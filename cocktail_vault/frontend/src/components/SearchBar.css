@@ -5,8 +5,9 @@
     border-radius: 6px;
     border-style: solid;
     background-color: #090905;
+    box-sizing: border-box;
     font-family: "Mukta" ;
-    font-size: 30px;
+    font-size: 27px;
     font-weight: 200;
     color: white;
 }

@@ -1,0 +1,39 @@
+.ItemCard {
+  display: flex;
+  flex-direction: row;
+  background-color: #191919;
+  border-radius: 25px;
+  box-sizing: border-box;
+  padding: 18px;
+  width: 428px;
+  height: 196px;
+}
+
+.ItemCard img {
+  width: 155px;
+  height: 155px;
+  border-radius: 25px;
+}
+
+.ItemCard-details {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-left: 17px;
+}
+
+.ItemCard-title {
+  color: #edddd1;
+  font-family: "Mukta";
+  font-weight: 200;
+  font-size: 30px;
+  height: 43px;
+  line-height: 43px;
+}
+
+.ItemCard-ingredients {
+  color: #edddd1;
+  font-family: "Mukta";
+  font-size: 20px;
+  font-weight: 200;
+}

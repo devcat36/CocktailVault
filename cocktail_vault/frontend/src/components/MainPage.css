@@ -30,7 +30,7 @@ h2 {
     color: #fef3eb;
 }
 
-.SearchBar {
+.MainPage .SearchBar {
     width: 100%;
     margin-top: 60px;
 }
