@@ -1,0 +1,47 @@
+.Inventory-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.Inventory h2 {
+  margin: 65px 0 0 97px;
+}
+
+.Inventory-list {
+  margin: 0 9% 29px;
+}
+
+.Inventory-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Inventory-buttons button {
+  width: 272px;
+  height: 73px;
+  margin: 0 13px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  font-family: "Raleway";
+  font-size: 28px;
+}
+
+@media only screen and (max-width: 520px) {
+  .Inventory h2 {
+    margin: 30px 0 0 10px;
+  }
+  .Inventory-list {
+    margin: 0 3% 29px;
+  }
+  .Inventory-buttons {
+      flex-direction: column;
+  }
+  .Inventory-buttons button {
+      margin: 0 auto 13px;
+      width: 90%;
+  }
+}

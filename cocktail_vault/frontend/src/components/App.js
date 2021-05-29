@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "./App.css";
 import MainPage from "./MainPage";
 import ExplorePage from "./ExplorePage";
+import Inventory from "./Inventory"
 
 function App() {
   return (
     <div className="App">
-      <ExplorePage />
+      <Inventory />
     </div>
   );
 }
