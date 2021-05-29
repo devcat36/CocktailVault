@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: column;
   padding: 0;
+  margin: 0 9% 29px;
+  max-height: 800px;
+  overflow: auto;
 }
 
 .Inventory h2 {
   margin: 65px 0 0 97px;
-}
-
-.Inventory-list {
-  margin: 0 9% 29px;
 }
 
 .Inventory-buttons {

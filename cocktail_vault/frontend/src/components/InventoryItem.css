@@ -1,6 +1,7 @@
 .InventoryItem {
     display: flex;
     flex-direction: row;
+    flex-shrink: 0;
     height: 99px;
     border-top: 1px solid #4e4e4e;
     box-sizing: border-box;
