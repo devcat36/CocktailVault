@@ -1,0 +1,85 @@
+.CocktailDetailsPage .container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.CocktailDetailsPage-title {
+  font-family: "Raleway";
+  font-weight: 400;
+  font-size: 48px;
+  color: white;
+  margin-top: 56px;
+}
+
+.CocktailDetailsPage-ingredientsList {
+  margin-top: 56px 0 22px;
+}
+
+.CocktailDetailsPage-listTitle {
+  font-family: "Raleway";
+  font-size: 28px;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 0;
+}
+
+.CocktailDetailsPage hr {
+  color: white;
+  margin-bottom: 0;
+}
+
+.CocktailDetailsPage-listItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Raleway";
+  font-size: 24px;
+  font-weight: 200;
+  color: white;
+  border-bottom: 1px solid #808080;
+  padding: 0 11px;
+  height: 47px;
+}
+
+.CocktailDetailsPage-listItem:last-child {
+  border-bottom: none;
+}
+
+.CocktailDetailsPage-list {
+  padding: 0 4px;
+  margin: 0;
+}
+
+.CocktailDetailsPage-instructions {
+  color: white;
+  font-family: "Raleway";
+  font-size: 24px;
+  font-weight: 200;
+  padding: 0 4px;
+}
+
+.CocktailDetailsPage-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 19px;
+}
+
+.CocktailDetailsPage img {
+  width: 300px;
+  margin: 5px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 520px) {
+  .CocktailDetailsPage-images {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .CocktailDetailsPage img {
+    width: 100%;
+  }
+}

@@ -34,6 +34,10 @@
   margin: 0 30px 0 30px;
 }
 
+.Navbar-menu li:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 520px) {
   .Navbar {
     flex-direction: column;
