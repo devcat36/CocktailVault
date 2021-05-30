@@ -1,6 +1,6 @@
 import React from "react";
 import AddIcon from "@material-ui/icons/Add";
-import './IngredientItem.css'
+import "./IngredientItem.css";
 
 function IngredientItem({ ingredient }) {
   return (

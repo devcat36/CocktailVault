@@ -37,10 +37,10 @@
     margin: 0 3% 29px;
   }
   .Inventory-buttons {
-      flex-direction: column;
+    flex-direction: column;
   }
   .Inventory-buttons button {
-      margin: 0 auto 13px;
-      width: 90%;
+    margin: 0 auto 13px;
+    width: 90%;
   }
 }

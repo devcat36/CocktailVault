@@ -31,7 +31,7 @@ const ingredients = [
     hasKind: false,
     kind: "",
     image: "https://picsum.photos/200",
-  }
+  },
 ];
 
 function IngredientSelectionModal() {

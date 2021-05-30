@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import InventoryItem from "./InventoryItem";
-import IngredientSelectionModal from "./IngredientSelectionModal"
+import IngredientSelectionModal from "./IngredientSelectionModal";
 import AddIcon from "@material-ui/icons/Add";
 import "./Inventory.css";
 
@@ -34,7 +34,6 @@ const ingredients = [
     kind: "",
     image: "https://picsum.photos/200",
   },
-  
 ];
 
 function Inventory() {

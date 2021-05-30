@@ -1,78 +1,78 @@
 .InventoryItem {
-    display: flex;
-    flex-direction: row;
-    flex-shrink: 0;
-    height: 99px;
-    border-top: 1px solid #4e4e4e;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  height: 99px;
+  border-top: 1px solid #4e4e4e;
+  box-sizing: border-box;
 }
 
 .InventoryItem:first-child {
-    border-top: none;
+  border-top: none;
 }
 
 .InventoryItem:last-child {
-    border-bottom: 1px solid #4e4e4e;
+  border-bottom: 1px solid #4e4e4e;
 }
 
 .InventoryItem:hover {
-    background-color: #191919;
-    border-radius: 10px;
-    border-top: none;
-    border-bottom: none;
+  background-color: #191919;
+  border-radius: 10px;
+  border-top: none;
+  border-bottom: none;
 }
 
 .InventoryItem:hover .InventoryItem-name {
-    color: #f8893a;
+  color: #f8893a;
 }
 
-.InventoryItem:hover .InventoryItem-removeButton{
-    border: 1px solid #0a0a0a;
+.InventoryItem:hover .InventoryItem-removeButton {
+  border: 1px solid #0a0a0a;
 }
 
 .InventoryItem:hover + li {
-    border-top: none;
+  border-top: none;
 }
 
 .InventoryItem img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin: auto 0 auto 23px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: auto 0 auto 23px;
 }
 
 .InventoryItem-name {
-    display: flex;
-    align-items: center;
-    flex-grow: 2;
-    color: white;
-    font-family: 'Raleway';
-    font-size: 28px;
-    font-weight: 300;
-    margin-left: 51px
+  display: flex;
+  align-items: center;
+  flex-grow: 2;
+  color: white;
+  font-family: "Raleway";
+  font-size: 28px;
+  font-weight: 300;
+  margin-left: 51px;
 }
 
 .InventoryItem-removeButton {
-    width: 50px;
-    height: 50px;
-    margin: auto 12px;
-    border-radius: 10px;
-    color: white;
-    background-color: #191919;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: auto 12px;
+  border-radius: 10px;
+  color: white;
+  background-color: #191919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .InventoryItem-removeButton:hover {
-    color: #f8893a;
+  color: #f8893a;
 }
 
-@media only screen and (max-width: 520px){
-    .InventoryItem {
-        height: 90px;
-    }
-    .InventoryItem-name {
-        font-size: 25px;
-    }
+@media only screen and (max-width: 520px) {
+  .InventoryItem {
+    height: 90px;
+  }
+  .InventoryItem-name {
+    font-size: 25px;
+  }
 }
