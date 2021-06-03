@@ -105,6 +105,7 @@ def add_inventory_item(request):
     return JsonResponse(response)
 
 
+@sync_to_async
 @api_view(['POST'])
 def remove_inventory_item(request):
     token = request._auth
