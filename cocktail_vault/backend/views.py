@@ -1,15 +1,10 @@
-from django.shortcuts import render
-from functools import wraps
-import jwt
-from django.http import JsonResponse, response
+from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
-import sys
 import requests
-import json
 from django.forms.models import model_to_dict
-from rest_framework.views import exception_handler
 from rest_framework.exceptions import APIException
+from asgiref.sync import sync_to_async
 from .models import *
 
 
@@ -17,7 +12,11 @@ def get_userinfo_from_token(token):
     url = 'https://devcat.eu.auth0.com/userinfo'
     headers = {'Content-Type': 'application/json',
                'Authorization': 'Bearer ' + token}
-    return requests.get(url, headers=headers).json()
+    try:
+        response = requests.get(url, headers=headers)
+    except:
+        raise APIException()
+    return response.json()
 
 
 def get_cocktail_ingredients(cocktail):
@@ -25,6 +24,11 @@ def get_cocktail_ingredients(cocktail):
             'ingredient': model_to_dict(cocktail_ingredient.ingredient),
             'amount': cocktail_ingredient.amount
             } for cocktail_ingredient in CocktailIngredient.objects.filter(cocktail=cocktail)]
+
+
+def create_user(email):
+    record = User(email=email)
+    record.save()
 
 
 @api_view(['GET'])
@@ -62,13 +66,58 @@ def get_cocktail(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_ingredients(request):
+def get_all_ingredients():
     ingredients = Ingredient.objects.all()
     response = [model_to_dict(ingredient) for ingredient in ingredients]
     return JsonResponse(response, safe=False)
 
 
+@sync_to_async
 @api_view(['GET'])
-def private(request):
-    print(get_userinfo_from_token(request._auth)['email'])
-    return JsonResponse({'message': 'Hello from a private endpoint! You need to be authenticated to see this.'})
+def get_inventory(request):
+    token = request._auth
+    email = get_userinfo_from_token(token)['email']
+    if not User.objects.filter(email=email).exists():
+        create_user(email)
+    inventory = User.objects.get(email=email).inventory
+    response = [model_to_dict(ingredient) for ingredient in inventory.all()]
+    return JsonResponse(response, safe=False)
+
+
+@sync_to_async
+@api_view(['POST'])
+def add_inventory_item(request):
+    token = request._auth
+    email = get_userinfo_from_token(token)['email']
+    if not User.objects.filter(email=email).exists():
+        create_user(email)
+    try:
+        ingredient_id = request.data['id']
+    except:
+        raise APIException('Bad Request')
+    try:
+        ingredient = Ingredient.objects.get(id=ingredient_id)
+    except:
+        raise APIException('Resource Not Found')
+    inventory = User.objects.get(email=email).inventory
+    inventory.add(ingredient)
+    response = {'result': 'success'}
+    return JsonResponse(response)
+
+
+@api_view(['POST'])
+def remove_inventory_item(request):
+    token = request._auth
+    email = get_userinfo_from_token(token)['email']
+    try:
+        ingredient_id = request.data['id']
+    except:
+        raise APIException('Bad Request')
+    try:
+        ingredient = Ingredient.objects.get(id=ingredient_id)
+    except:
+        raise APIException('Resource Not Found')
+    inventory = User.objects.get(email=email).inventory
+    inventory.remove(ingredient)
+    response = {'result': 'success'}
+    return JsonResponse(response)

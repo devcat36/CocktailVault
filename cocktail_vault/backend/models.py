@@ -22,4 +22,4 @@ class Cocktail(models.Model):
 
 class User(models.Model):
     email = models.CharField(max_length=320)
-    inventory = models.ManyToManyField('Ingredient')
+    inventory = models.ManyToManyField('Ingredient', blank=True)
