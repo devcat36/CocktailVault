@@ -1,0 +1,461 @@
+{
+    "Absinthe": {
+        "abv": 40,
+        "taste": null,
+        "image": "http://1000things-london.com/wp-content/uploads/2012/03/IMG_1064.jpg"
+    },
+    "Aperol": {
+        "abv": 11,
+        "taste": "bitter",
+        "image": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/7113-aperitivo-aperol-750ml.1608732740.jpg"
+    },
+    "Apricot brandy": {
+        "abv": 40,
+        "taste": null,
+        "image": "http://www.onlyfoods.net/wp-content/uploads/2017/09/Easy-Summer-Dessert-Apricot-Brandy-Mixed-Drinks.jpg"
+    },
+    "Blackberry liqueur": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://cdn8.bigcommerce.com/s-b0811/products/773/images/528/Pinnacle_Vodka_Blueberry_750Ml__63553.1312151644.480.480.JPG?c=2"
+    },
+    "Cachaca": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://www.sabor.co.uk/wp-content/uploads/2011/08/Cahipirinha-sabor-esnayder..jpg"
+    },
+    "Calvados": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Pommeau_de_Normandie.JPG"
+    },
+    "Campari": {
+        "abv": 25,
+        "taste": null,
+        "image": "https://www.hawtcelebs.com/wp-content/uploads/2012/11/PENELOPE-CRUZ-on-2013-Campari-Calendar-8.jpg"
+    },
+    "Champagne": {
+        "abv": 12,
+        "taste": null,
+        "image": "http://cdn.shopify.com/s/files/1/0129/1262/files/gold-leaf-champagne-cocktail_large.jpg?14737120439975723658"
+    },
+    "Cherry liqueur": {
+        "abv": 30,
+        "taste": null,
+        "kind": [
+            "Maraschino"
+        ],
+        "image": "https://cherrywine.com/wp-content/uploads/2011/10/Cherry-Liqueur-375ml-658x1024.jpg",
+        "kind_image": [
+            "http://i.huffpost.com/gen/563869/images/o-MARASCHINO-LIQUEUER-facebook.jpg"
+        ]
+    },
+    "Coconut milk": {
+        "abv": 0,
+        "taste": "sweet",
+        "image": "https://www.cookingclassy.com/wp-content/uploads/2017/03/coconut-cupcakes-66.jpg"
+    },
+    "Coffee liqueur": {
+        "abv": 20,
+        "taste": "bitter",
+        "kind": [
+            "Kahl\u00faa"
+        ],
+        "image": "https://www.tequilasource.com/tequilasdelsenor/pics/coffee-liqueur_r2.jpg",
+        "kind_image": [
+            "https://cdn11.bigcommerce.com/s-gr83s/images/stencil/1280x1280/products/2781/7175/Peppermint_Mocha__96874.1541452805.jpg?c=2&amp;imbypass=on"
+        ]
+    },
+    "Cognac": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://www.hennessy.com/sites/hennessy/files/2020-03/01_DESIGN_2880x1540.jpg"
+    },
+    "Cola": {
+        "abv": 0,
+        "taste": "bitter",
+        "image": "https://clipartart.com/images/coke-can-clipart-8.jpg"
+    },
+    "Cranberry juice": {
+        "abv": 0,
+        "taste": "sour",
+        "image": "https://i.pinimg.com/736x/96/8d/61/968d61f5bfc14ff14b38968bc103bfac.jpg"
+    },
+    "Cream": {
+        "abv": 0,
+        "taste": "sweet",
+        "kind": [
+            "Baileys Irish Cream"
+        ],
+        "image": "http://photo-dictionary.com/photofiles/list/7993/10793sour_cream.jpg",
+        "kind_image": [
+            "https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/05/31/16/baileys-strawberry-and-cream.jpg"
+        ]
+    },
+    "Cream liqueur": {
+        "abv": 20,
+        "taste": null,
+        "image": "https://images.chickadvisor.com/item/27913/original/6306a9cdb6a31fe2045e41adf2a45ae6.jpg",
+        "kind": ["Baileys Irish Cream"],
+        "kind_image": ["https://s3.amazonaws.com/images.ecwid.com/images/16061030/1093468145.jpg"]
+    },
+    "Cr\u00e9me liqueur": {
+        "abv": 20,
+        "taste": null,
+        "kind": [
+            "White Cr\u00e9me de Menthe",
+            "White Cr\u00e9me de Cacao",
+            "Green Cr\u00e9me de Menthe",
+            "Brown Cr\u00e9me de Cacao",
+            "Cr\u00e9me de Cassis"
+        ],
+        "image": "https://kingsliquor.co.nz/wp-content/uploads/2019/08/nz-liquor-strawberry-700ml.jpg",
+        "kind_image": [
+            "https://www.mybottleshop.com/media/catalog/product/cache/37a945ae749548a321239175b147c2a7/b/a/baitz_cr_de_menthe_white_500ml_1.jpg",
+            "https://cocktailbart.de/wp-content/uploads/2020/02/Dutch-Cacao-17th-Century.jpg",
+            "https://shake-that.com/wp-content/uploads/2015/07/Grasshopper.jpg",
+            "https://www.rumhouse.cz/pic_zbozi/li002382.jpg",
+            "https://cdn.awsli.com.br/800x800/1352/1352301/produto/57404776/562098dc14.jpg"
+        ]
+    },
+    "Dark rum": {
+        "abv": 40,
+        "taste": null,
+        "kind": [
+            "Gold"
+        ],
+        "image": "https://img.thewhiskyexchange.com/540/rum_kra3.jpg",
+        "kind_image": [
+            "https://cdn2.bigcommerce.com/server900/b0811/products/1823/images/7517/bacardi_gold__90410.1457588666.480.480.JPG?c=2"
+        ]
+    },
+    "DiSaronno": {
+        "abv": 28,
+        "taste": null,
+        "image": "http://www.celticwhiskeyshop.com/image/Spirits/Disaronno-Amaretto.jpg"
+    },
+    "DOM B\u00e9n\u00e9dictine": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://dengyldneloeve.dk/wp-content/uploads/2015/06/dom-1.jpg"
+    },
+    "Drambuie": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Drambuie.jpg"
+    },
+    "Dry White Wine": {
+        "abv": 12,
+        "taste": null,
+        "image": "https://www.uleybury.com/wp-content/uploads/2014/02/2019-Moscato.jpg"
+    },
+    "Egg yolk": {
+        "abv": 0,
+        "taste": null,
+        "image": "https://media1.s-nbcnews.com/j/newscms/2018_38/1368436/eggs-today-main-180917_880dee4fed6ebbb5659afba3186fea76.social_share_1200x630_center.jpg"
+    },
+    "Galliano": {
+        "abv": 30,
+        "taste": "sweet",
+        "image": "https://www.onlyfoods.net/wp-content/uploads/2017/08/Galliano-Drinks-Galliano-Liqueur.jpg"
+    },
+    "Gin": {
+        "abv": 40,
+        "taste": null,
+        "kind": [
+            "Old Tom"
+        ],
+        "image": "http://kitchenswagger.com/wp-content/uploads/2018/11/classic-gin-martini1.jpg",
+        "kind_image": [
+            "https://www.drinkology.de/media/image/52/bf/e4/19137.jpg"
+        ]
+    },
+    "Ginger Ale": {
+        "abv": 0,
+        "taste": null,
+        "image": "http://i.imgur.com/mXrZnuK.jpg"
+    },
+    "Ginger beer": {
+        "abv": 5,
+        "taste": "sweet",
+        "image": "http://www.onlyfoods.net/wp-content/uploads/2017/10/Easy-St-Germain-Rum-Whiskey-Alcoholic-Mixes.jpg"
+    },
+    "Grapefruit juice": {
+        "abv": 0,
+        "taste": "sour",
+        "image": "https://www.thermofisher.com/blog/food/wp-content/uploads/sites/5/2014/06/grapefruit_slice.jpg"
+    },
+    "Hot coffee": {
+        "abv": 0,
+        "taste": "bitter",
+        "image": "https://www.slashgear.com/gallery/data_files/1/4/6/HotCoffee.jpg"
+    },
+    "Kirsch": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://www.cambridge-bach.co.uk/wp-content/uploads/2015/11/Prunus_cerasifera_LC0385.jpg"
+    },
+    "Lemon juice": {
+        "abv": 0,
+        "taste": "sour",
+        "image": "http://tree.daleysfruit.com.au/b/Lemon.jpg"
+    },
+    "Lillet Blonde": {
+        "abv": 15,
+        "taste": null,
+        "image": "http://winedharma.com/sites/winedharma.com/files/imagecache/auto-768/story/1597-ingredients-vesper-martini-cocktail-gin-vodka-and-kina-blonde.jpg"
+    },
+    "Lime juice": {
+        "abv": 0,
+        "taste": "sour",
+        "image": "http://www.momendeavors.com/wp-content/uploads/2013/07/fresh-fruit-popsicles-506x1024.jpg"
+    },
+    "Olive juice": {
+        "abv": 0,
+        "taste": "sour",
+        "image": "https://penelopesoasis.com/wp-content/uploads/2013/06/best-shrimp-scampi-recipe.png"
+    },
+    "Orange Bitters": {
+        "abv": 40,
+        "taste": null,
+        "image": "http://the-bitter-truth.com/wp-content/uploads/2018/02/Pink-Gin-Cocktail.jpg"
+    },
+    "Orange juice": {
+        "abv": 0,
+        "taste": "sweet",
+        "image": "http://www.cookingclassy.com/wp-content/uploads/2013/03/jamba-juice-banana-berry-copycat.jpg"
+    },
+    "Peach puree": {
+        "abv": 0,
+        "taste": "sweet",
+        "image": "https://www.ilfornaioblog.com/wp-content/uploads/2012/11/BM-Bellini1.jpg"
+    },
+    "Peach schnapps": {
+        "abv": 40,
+        "taste": "sweet",
+        "image": "https://media.buzzle.com/media/images-en/gallery/drinks/cocktails/1200-505582433-cocktail-alien-urine.jpg"
+    },
+    "Pineapple juice": {
+        "abv": 0,
+        "taste": "sweet",
+        "image": "https://www.australiantropicalfoods.com/wp-content/uploads/2008/12/pineapples1.jpg"
+    },
+    "Pisco": {
+        "abv": 40,
+        "taste": null,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Tacna_sour_31072010.jpg/1200px-Tacna_sour_31072010.jpg"
+    },
+    "Prosecco": {
+        "abv": 12,
+        "taste": null,
+        "image": "https://www.tablefortwoblog.com/wp-content/uploads/2013/06/raspberry-peach-prosecco-tablefortwoblog-2.jpg"
+    },
+    "Raspberry liqueur": {
+        "abv": 20,
+        "taste": "sweet",
+        "image": "https://www.meatsandsausages.com/public/images/recipes/alcohol/raspberry-liqueur.jpg"
+    },
+    "Red Port": {
+        "abv": 20,
+        "taste": null,
+        "image": "https://www.wallpapers13.com/wp-content/uploads/2016/10/Sunset-red-cloud-sea-seaside-docking-port-stone-Landscape-Wallpaper-HD-1920x1200-1920x1080.jpg"
+    },
+    "Soda water": {
+        "abv": 0,
+        "taste": null,
+        "image": "https://cdn.shoplightspeed.com/shops/636686/files/21906896/malibu-coconut-rum-750-ml.jpg"
+    },
+    "Syrup": {
+        "abv": 0,
+        "taste": "sweet",
+        "kind": [
+            "Grenadine",
+            "Sugar",
+            "Gomme",
+            "Raspberry",
+            "Simple",
+            "Orgeat",
+            "Strawberry"
+        ],
+        "image": "https://spicesnflavors.com/wp-content/uploads/2017/10/butterscotch-sauce-2-min.jpg",
+        "kind_image": [
+            "http://www.socialandcocktail.co.uk/wp-content/uploads/2011/12/Detropolitan.jpg",
+            "https://static2.gamerantimages.com/wordpress/wp-content/uploads/2020/12/Hunters-Haven-Syrup-Challenge-Fortnite.jpg",
+            "https://www.thespruceeats.com/thmb/xP9rrk0zGLjUOTEr33UnSop6sYk=/1500x1000/filters:fill(auto,1)/make-your-own-gomme-syrup-760290.Hero-5b5f272a46e0fb0025070988.jpg",
+            "https://i.pinimg.com/736x/6c/fe/7a/6cfe7a0c6883f083cbb6539332325819--beverages-drinks.jpg",
+            "https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/189844_1487710710_0.jpg",
+            "http://www.cocktailhunter.com/wp-content/uploads/2013/08/Rum-Runner-Special.jpg",
+            "https://i.ytimg.com/vi/EQO9GBrtEEg/hqdefault.jpg"
+        ]
+    },
+    "Tequila": {
+        "abv": 40,
+        "taste": null,
+        "kind": [
+            "Silver"
+        ],
+        "image": "http://www.proof66.com/images/hires/201107050357314e12ee1bda11d.jpg",
+        "kind_image": [
+            "http://www.proof66.com/images/hires/201107050351484e12ecc4878ca.jpg"
+        ]
+    },
+    "Tomato juice": {
+        "abv": 0,
+        "taste": "salty",
+        "image": "http://www.resnickdistributors.com/assets/1/6/MainFCKEditorDimension/motts_1.jpg"
+    },
+    "Triple Sec": {
+        "abv": 40,
+        "taste": "sweet",
+        "kind": [
+            "Cointreau",
+            "Grand Marnier",
+            "Orange Cura\u00e7ao"
+        ],
+        "image": "https://whatscookingamerica.net/wp-content/uploads/2015/04/LemonDropMartini.jpg",
+        "kind_image": [
+            "https://www.artofdrink.com/wp-content/uploads/2016/02/triple-sec-liqueur-cocktail.jpg",
+            "http://www.campari-schweiz.ch/sites/default/files/brand/gmcr_non_usa_700_lr.jpg",
+            "https://image.jimcdn.com/app/cms/image/transf/dimension=606x10000:format=jpg/path/sbeb447e6a759bd6b/image/ie126b048bd8e3dca/version/1474354793/triple-sec.jpg"
+        ]
+    },
+    "Vermouth": {
+        "abv": 17,
+        "taste": null,
+        "kind": [
+            "Sweet red",
+            "Dry",
+            "Red"
+        ],
+        "image": "http://mixthatdrink.com/wp-content/uploads/2009/08/negroni-drink-fb.jpg",
+        "kind_image": [
+            "http://mixthatdrink.com/wp-content/uploads/2009/08/negroni-drink-2-600x900.jpg",
+            "https://www.whisky.fr/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/3/m3310C.jpg",
+            "https://mixthatdrink.com/wp-content/uploads/2009/08/negroni-drink-fb.jpg"
+        ]
+    },
+    "Vodka": {
+        "abv": 40,
+        "taste": null,
+        "kind": [
+            "Citron"
+        ],
+        "image": "https://www.thedrinkkings.com/wp-content/uploads/2014/06/Vodka-Tonic-3-630.jpg",
+        "kind_image": [
+            "https://www.imigrantesbebidas.com.br/bebida/images/products/full/61063_Vodka_Pravda_Citron_750_ml.jpg"
+        ]
+    },
+    "Whiskey": {
+        "abv": 40,
+        "taste": null,
+        "kind": [
+            "Bourbon",
+            "Rye",
+            "Scotch",
+            "Irish"
+        ],
+        "image": "https://spiritsreview.com/wp-content/uploads/2012/11/IMGP3750.jpg",
+        "kind_image": [
+            "https://images.finedrams.com/image/19011-large-1/bruichladdich-octomore-7-2-5-year-old-whisky.jpg",
+            "https://i.pinimg.com/736x/b2/96/53/b29653a8affa9b6fb79d0173515bd125.jpg",
+            "https://images.finedrams.com/image/18488-large-1/dalmore-12-year-old-whisky.jpg",
+            "https://www.celticwhiskeyshop.com/image/data/Whiskey/Irishman-Single-Malt.jpg"
+        ]
+    },
+    "White rum": {
+        "abv": 40,
+        "taste": null,
+        "kind": [
+            "Bacardi",
+            "Cuban"
+        ],
+        "kind_image": [
+            "https://www.tastings.com/Product-Images/Spirits/2018/7_1_2018/224806_fs.jpg",
+            "https://moorewilsons.co.nz/media/catalog/product/cache/1/image/800x/602f0fa2c1f0d1ba5e241f914e856ff9/h/a/havana-club-3yo/havana-club-3-year-old-white-rum-31.jpg"
+        ],
+        "image": "https://cdn11.bigcommerce.com/s-7a906/products/5068/images/4099/cave_kouroum_arak__54340.1348085502.386.513.jpg?c=2"
+    },
+    "Angostura Bitters": {
+        "image": "http://static.dnaindia.com/sites/default/files/2015/01/08/299784-legacy-by-angostura-3-extravaganzicom.jpg"
+    },
+    "Sugar Cube": {
+        "image": "https://www.oliversmarket.com/wp-content/uploads/2019/06/old-fashioned.jpg"
+    },
+    "Plain Water": {
+        "image": "http://www.hdwallpapers.in/download/underwater-2560x1600.jpg"
+    },
+    "Mint": {
+        "image": "http://messagenote.com/wp-content/uploads/2015/09/Great-way-to-give-old-wood-paneled-walls-a-modern-country-update.jpg"
+    },
+    "Sugar": {
+        "kind": [
+            "White",
+            "Brown"
+        ],
+        "image": "https://hative.com/wp-content/uploads/2014/05/dia-de-los-muertos/20-steampunk-dia-de-los-muertos.jpg",
+        "kind_image": [
+            "https://pic2.zhimg.com/62df7ec07d648a1303525aaebd51c0d4_r.jpg?source=1940ef5c",
+            "https://resize.hswstatic.com/w_1024/gif/monk-fruit.jpg"
+        ]
+    },
+    "Egg": {
+        "image": "https://www.architectureartdesigns.com/wp-content/uploads/2013/03/Easy-Easter-DIY-Crafts-Egg-Center-Piece-How-To.jpg"
+    },
+    "Espresso": {
+        "image": "https://www.italymagazine.com/sites/default/files/bigstock-cup-of-espresso-coffee-roaste-261010009_1.jpg"
+    },
+    "Worcestershire Sauce": {
+        "image": "http://www.flyingtigerantiques.com/mm5/graphics/00000001/leaperrinworcbttl1890sobv.jpg"
+    },
+    "Tabasco": {
+        "image": "http://i.ytimg.com/vi/lYSe4dDCQ14/maxresdefault.jpg"
+    },
+    "Celery salt": {
+        "image": "https://www.eatwell101.com/wp-content/uploads/2020/09/Sausage-Potato-Soup-recipe.jpg"
+    },
+    "Pepper": {
+        "image": "http://www.globalgardenfriends.com/wp-content/uploads/2012/10/IMG_7856.jpg"
+    },
+    "Peach Bitters": {
+        "image": "https://cdn0.wideopeneats.com/wp-content/uploads/2020/05/DSC7160_s-scaled.jpg"
+    },
+    "Peychaud\u2019s bitters": {
+        "image": "https://www.mycocktailmasterclass.co.uk/wp-content/uploads/2014/12/Sazerac-web.jpg"
+    },
+    "Lime": {
+        "image": "https://www.architectureartdesigns.com/wp-content/uploads/2014/01/2021.jpg"
+    },
+    "Agave nectar": {
+        "image": "https://usercontent2.hubstatic.com/13164967_f1024.jpg"
+    },
+    "Orange flower water": {
+        "image": "https://www.prochronism.com/wp-content/uploads/2018/10/lotus-flower-tattoos-02091842.jpg"
+    },
+    "Vanilla extract": {
+        "image": "https://keeprecipes.com/sites/keeprecipes/files/14872_1505417298_0.jpg"
+    },
+    "Honey": {
+        "kind": [
+            "clear"
+        ],
+        "image": "http://www.hummelviksgarden.com/wp-content/uploads/2015/10/bla.jpg",
+        "kind_image": [
+            "https://keeprecipes.com/sites/keeprecipes/files/kybbqfestivalbeefribs.jpg"
+        ]
+    },
+    "Onion": {
+        "image": "http://bestslimmingworld.com/wp-content/uploads/2020/06/Onion-Bhaji2.jpg"
+    },
+    "Chili pepper": {
+        "kind": [
+            "Red"
+        ],
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Chile_pequin_fruit_and_flower_closeup.jpg/1200px-Chile_pequin_fruit_and_flower_closeup.jpg",
+        "kind_image": [
+            "https://agoodtree.com/wp-content/uploads/2020/04/Chilli-Varieties-in-India-Mirchi-Varieties-in-India.jpg"
+        ]
+    },
+    "Salt": {
+        "image": "https://whatscookingamerica.net/wp-content/uploads/2015/03/Sea-Salt-Caramels.jpg"
+    }
+}

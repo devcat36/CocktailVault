@@ -5,7 +5,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=50)
     hasKind = models.BooleanField(default=False)
     kind = models.CharField(max_length=50, blank=True)
-    image = models.ImageField(upload_to='media/ingredients')
+    image = models.URLField(max_length=200)
 
 
 class CocktailIngredient(models.Model):
@@ -17,7 +17,7 @@ class CocktailIngredient(models.Model):
 class Cocktail(models.Model):
     name = models.CharField(max_length=50)
     instructions = models.TextField()
-    image = models.ImageField(upload_to='media/cocktails')
+    image = models.URLField(max_length=200)
 
 
 class User(models.Model):
