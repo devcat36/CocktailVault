@@ -35,7 +35,7 @@ def create_user(email):
 @permission_classes([AllowAny])
 def search_recipes(request):
     try:
-        term = request.data['term']
+        term = request.GET['term']
     except:
         raise APIException('Bad Request')
     search_result = Cocktail.objects.filter(name__contains=term)
@@ -50,7 +50,7 @@ def search_recipes(request):
 @permission_classes([AllowAny])
 def get_cocktail(request):
     try:
-        cocktail_id = request.data['id']
+        cocktail_id = request.GET['id']
     except:
         raise APIException('Bad Request')
     try:
@@ -81,6 +81,7 @@ def get_inventory(request):
         create_user(email)
     inventory = User.objects.get(email=email).inventory
     response = [model_to_dict(ingredient) for ingredient in inventory.all()]
+    print(response)
     return JsonResponse(response, safe=False)
 
 
@@ -92,7 +93,7 @@ def add_inventory_item(request):
     if not User.objects.filter(email=email).exists():
         create_user(email)
     try:
-        ingredient_id = request.data['id']
+        ingredient_id = request.POST['id']
     except:
         raise APIException('Bad Request')
     try:
@@ -111,7 +112,7 @@ def remove_inventory_item(request):
     token = request._auth
     email = get_userinfo_from_token(token)['email']
     try:
-        ingredient_id = request.data['id']
+        ingredient_id = request.POST['id']
     except:
         raise APIException('Bad Request')
     try:
