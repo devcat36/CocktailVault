@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import MainPage from "./MainPage";
 import ExplorePage from "./ExplorePage";
@@ -10,7 +11,14 @@ import { Auth0Provider } from "@auth0/auth0-react";
 function App() {
   return (
     <div className="App">
-      <Inventory />
+      <Router>
+        <Switch>
+        <Route path='/explore'><ExplorePage /></Route>
+        <Route path='/inventory'><Inventory /></Route>
+        <Route path='/recipe'><CocktailDetailsPage /></Route>
+        <Route path='/'><MainPage /></Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

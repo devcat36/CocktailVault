@@ -1,33 +1,23 @@
-import React, { useEffect } from "react";
-import "./Navbar.css";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./Navbar.css";
 
 function Navbar() {
-  const { loginWithRedirect, logout, isAuthenticated, getAccessTokenSilently } =
-    useAuth0();
-  useEffect(async () => {
-    const domain = "devcat.eu.auth0.com";
-    try {
-      const accessToken = await getAccessTokenSilently({
-        audience: `cocktail_vault`,
-        scope: "read:current_user",
-      });
-      const response = await fetch("http://localhost:8000/api/private", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      console.log(response);
-    } catch (e) {
-      console.log(e.message);
-    }
-  }, []);
+  const history = useHistory();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
   return (
     <nav className="Navbar">
-      <div className="Navbar-logo">Cocktail Vault</div>
+      <div className="Navbar-logo" onClick={() => history.push("/")}>
+        Cocktail Vault
+      </div>
       <ul className="Navbar-menu">
-        <li>Explore</li>
-        <li>Inventory</li>
+        <li>
+          <a onClick={() => history.push("/explore")}>Explore</a>
+        </li>
+        <li>
+          <a onClick={() => history.push("/inventory")}>Inventory</a>
+        </li>
         <li>
           {isAuthenticated ? (
             <a onClick={() => logout({ returnTo: window.location.origin })}>
