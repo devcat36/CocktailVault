@@ -6,17 +6,7 @@ from django.forms.models import model_to_dict
 from rest_framework.exceptions import APIException
 from asgiref.sync import sync_to_async
 from .models import *
-
-
-def get_userinfo_from_token(token):
-    url = 'https://devcat.eu.auth0.com/userinfo'
-    headers = {'Content-Type': 'application/json',
-               'Authorization': 'Bearer ' + token}
-    try:
-        response = requests.get(url, headers=headers)
-    except:
-        raise APIException()
-    return response.json()
+import json
 
 
 def get_cocktail_ingredients(cocktail):
@@ -26,8 +16,8 @@ def get_cocktail_ingredients(cocktail):
             } for cocktail_ingredient in CocktailIngredient.objects.filter(cocktail=cocktail)]
 
 
-def create_user(email):
-    record = User(email=email)
+def create_user(username):
+    record = User(username=username)
     record.save()
 
 
@@ -75,11 +65,13 @@ def get_all_ingredients(request):
 @sync_to_async
 @api_view(['GET'])
 def get_inventory(request):
-    token = request._auth
-    email = get_userinfo_from_token(token)['email']
-    if not User.objects.filter(email=email).exists():
-        create_user(email)
-    inventory = User.objects.get(email=email).inventory
+    try:
+        username = request._user.username
+    except:
+        raise APIException()
+    if not User.objects.filter(username=username).exists():
+        create_user(username)
+    inventory = User.objects.get(username=username).inventory
     response = [model_to_dict(ingredient) for ingredient in inventory.all()]
     return JsonResponse(response, safe=False)
 
@@ -87,10 +79,12 @@ def get_inventory(request):
 @sync_to_async
 @api_view(['POST'])
 def add_inventory_item(request):
-    token = request._auth
-    email = get_userinfo_from_token(token)['email']
-    if not User.objects.filter(email=email).exists():
-        create_user(email)
+    try:
+        username = request._user.username
+    except:
+        raise APIException()
+    if not User.objects.filter(username=username).exists():
+        create_user(username)
     try:
         ingredient_id = request.POST['id']
     except:
@@ -99,7 +93,7 @@ def add_inventory_item(request):
         ingredient = Ingredient.objects.get(id=ingredient_id)
     except:
         raise APIException('Resource Not Found')
-    inventory = User.objects.get(email=email).inventory
+    inventory = User.objects.get(username=username).inventory
     inventory.add(ingredient)
     response = {'result': 'success'}
     return JsonResponse(response)
@@ -108,8 +102,10 @@ def add_inventory_item(request):
 @sync_to_async
 @api_view(['POST'])
 def remove_inventory_item(request):
-    token = request._auth
-    email = get_userinfo_from_token(token)['email']
+    try:
+        username = request._user.username
+    except:
+        raise APIException()
     try:
         ingredient_id = request.POST['id']
     except:
@@ -118,7 +114,7 @@ def remove_inventory_item(request):
         ingredient = Ingredient.objects.get(id=ingredient_id)
     except:
         raise APIException('Resource Not Found')
-    inventory = User.objects.get(email=email).inventory
+    inventory = User.objects.get(username=username).inventory
     inventory.remove(ingredient)
     response = {'result': 'success'}
     return JsonResponse(response)

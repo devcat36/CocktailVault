@@ -21,5 +21,6 @@ class Cocktail(models.Model):
 
 
 class User(models.Model):
-    email = models.CharField(max_length=320)
+    # email = models.CharField(max_length=320)
+    username = models.CharField(max_length=640)
     inventory = models.ManyToManyField('Ingredient', blank=True)
