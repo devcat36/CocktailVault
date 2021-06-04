@@ -21,7 +21,6 @@ function IngredientSelectionModal({ onClose, inventory }) {
     async (id) => {
       inventorySetRef.current.add(id);
       setInventorySet(new Set(inventorySetRef.current));
-      console.log(inventorySet);
       const result = await addIngredient(id, token);
       if (result === "fail") {
         inventorySetRef.current.delete(id);
