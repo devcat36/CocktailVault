@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useApi } from "../hooks/use-api";
 import { useToken } from "../hooks/use-token";
@@ -16,14 +16,25 @@ function Inventory() {
   const { data: inventory, refresh: refreshInventory } = useApi(api_url, true);
 
   const token = useToken();
+  const [awaitingRemovalIngredientSet, setAwaitingRemovalIngredientSet] =
+    useState(new Set());
+  const awaitingRemovalIngredientSetRef = useRef(new Set());
   const onRemoveItem = useCallback(
     async (id) => {
+      awaitingRemovalIngredientSetRef.current.add(id);
+      setAwaitingRemovalIngredientSet(awaitingRemovalIngredientSetRef.current);
       const result = await removeIngredient(id, token);
-      if (result === "success") {
-        refreshInventory();
-      }
+      if (result === "success") refreshInventory();
+      awaitingRemovalIngredientSetRef.current.delete(id);
+      setAwaitingRemovalIngredientSet(awaitingRemovalIngredientSetRef.current);
     },
-    [token, refreshInventory]
+    [
+      token,
+      refreshInventory,
+      awaitingRemovalIngredientSet,
+      setAwaitingRemovalIngredientSet,
+      awaitingRemovalIngredientSetRef,
+    ]
   );
 
   const [isModalShown, setIsModalShown] = useState(false);
@@ -44,6 +55,7 @@ function Inventory() {
               <InventoryItem
                 ingredient={ingredient}
                 onRemoveItem={() => onRemoveItem(ingredient.id)}
+                removing={awaitingRemovalIngredientSet.has(ingredient.id)}
                 key={ingredient.id}
               />
             ))}
