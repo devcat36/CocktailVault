@@ -1,12 +1,10 @@
 from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
-import requests
 from django.forms.models import model_to_dict
 from rest_framework.exceptions import APIException
 from asgiref.sync import sync_to_async
 from .models import *
-import json
 
 
 def get_cocktail_ingredients(cocktail):
