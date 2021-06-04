@@ -13,33 +13,34 @@ function Inventory() {
   const { data: inventory } = useApi(api_url, true);
   const [isModalShown, setIsModalShown] = useState(false);
   return (
-    <>
-      <div className="Inventory">
-        <Navbar />
-        <h2>Your Inventory</h2>
-        <hr />
-        {inventory && (
-          <>
-            <ul className="Inventory-list">
-              {inventory.map((ingredient) => (
-                <InventoryItem ingredient={ingredient} key={ingredient.id} />
-              ))}
-            </ul>
-            <ul className="Inventory-buttons">
-              <button onClick={() => setIsModalShown(true)}>
-                <AddIcon /> Add Ingredient
-              </button>
-              <button onClick={() => history.push("/explore")}>
-                Your Recipes
-              </button>
-            </ul>
-          </>
-        )}
-      </div>
-      {isModalShown && (
-        <IngredientSelectionModal onClose={() => setIsModalShown(false)} />
+    <div className="Inventory">
+      <Navbar />
+      <h2>Your Inventory</h2>
+      <hr />
+      {inventory && (
+        <>
+          <ul className="Inventory-list">
+            {inventory.map((ingredient) => (
+              <InventoryItem ingredient={ingredient} key={ingredient.id} />
+            ))}
+          </ul>
+          <ul className="Inventory-buttons">
+            <button onClick={() => setIsModalShown(true)}>
+              <AddIcon /> Add Ingredient
+            </button>
+            <button onClick={() => history.push("/explore")}>
+              Your Recipes
+            </button>
+          </ul>
+          {isModalShown && (
+            <IngredientSelectionModal
+              inventory={inventory}
+              onClose={() => setIsModalShown(false)}
+            />
+          )}
+        </>
       )}
-    </>
+    </div>
   );
 }
 

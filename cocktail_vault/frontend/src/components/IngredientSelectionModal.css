@@ -21,9 +21,11 @@
   max-height: 70vh;
 }
 
-.IngredientSelectionModal h2 {
+.IngredientSelectionModal-title {
+  font-family: "Raleway";
   font-size: 28px;
-  margin-bottom: 0;
+  color: white;
+  margin: 22px 0 0;
 }
 
 .IngredientSelectionModal-list {
