@@ -66,7 +66,7 @@ def get_cocktail(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_ingredients():
+def get_all_ingredients(request):
     ingredients = Ingredient.objects.all()
     response = [model_to_dict(ingredient) for ingredient in ingredients]
     return JsonResponse(response, safe=False)
@@ -81,7 +81,6 @@ def get_inventory(request):
         create_user(email)
     inventory = User.objects.get(email=email).inventory
     response = [model_to_dict(ingredient) for ingredient in inventory.all()]
-    print(response)
     return JsonResponse(response, safe=False)
 
 
