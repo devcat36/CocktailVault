@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useApi } from "../hooks/use-api";
 import { useToken } from "../hooks/use-token";
 import { addIngredient, removeIngredient } from "../api";
