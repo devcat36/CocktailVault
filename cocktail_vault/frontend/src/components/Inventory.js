@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useApi } from "../hooks/use-api";
+import { useToken } from "../hooks/use-token";
+import { removeIngredient } from "../api";
 import Navbar from "./Navbar";
 import InventoryItem from "./InventoryItem";
 import IngredientSelectionModal from "./IngredientSelectionModal";
 import AddIcon from "@material-ui/icons/Add";
-import { useApi } from "../hooks/use-api";
 import "./Inventory.css";
 
 function Inventory() {
   const history = useHistory();
+
   const api_url = "http://localhost:8000/api/get_inventory";
-  const { data: inventory } = useApi(api_url, true);
+  const { data: inventory, refresh: refreshInventory } = useApi(api_url, true);
+
+  const token = useToken();
+  const onRemoveItem = useCallback(
+    async (id) => {
+      const result = await removeIngredient(id, token);
+      if (result === "success") {
+        refreshInventory();
+      }
+    },
+    [token, refreshInventory]
+  );
+
   const [isModalShown, setIsModalShown] = useState(false);
   return (
     <div className="Inventory">
@@ -21,7 +36,11 @@ function Inventory() {
         <>
           <ul className="Inventory-list">
             {inventory.map((ingredient) => (
-              <InventoryItem ingredient={ingredient} key={ingredient.id} />
+              <InventoryItem
+                ingredient={ingredient}
+                onRemoveItem={() => onRemoveItem(ingredient.id)}
+                key={ingredient.id}
+              />
             ))}
           </ul>
           <ul className="Inventory-buttons">
