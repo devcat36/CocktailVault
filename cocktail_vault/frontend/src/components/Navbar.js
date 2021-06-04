@@ -16,7 +16,13 @@ function Navbar() {
           <a onClick={() => history.push("/explore")}>Explore</a>
         </li>
         <li>
-          <a onClick={() => history.push("/inventory")}>Inventory</a>
+          <a
+            onClick={() =>
+              isAuthenticated ? history.push("/inventory") : loginWithRedirect()
+            }
+          >
+            Inventory
+          </a>
         </li>
         <li>
           {isAuthenticated ? (
