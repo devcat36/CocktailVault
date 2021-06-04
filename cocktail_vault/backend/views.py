@@ -60,7 +60,6 @@ def get_all_ingredients(request):
     return JsonResponse(response, safe=False)
 
 
-@sync_to_async
 @api_view(['GET'])
 def get_inventory(request):
     try:
@@ -74,7 +73,6 @@ def get_inventory(request):
     return JsonResponse(response, safe=False)
 
 
-@sync_to_async
 @api_view(['POST'])
 def add_inventory_item(request):
     try:
@@ -97,7 +95,6 @@ def add_inventory_item(request):
     return JsonResponse(response)
 
 
-@sync_to_async
 @api_view(['POST'])
 def remove_inventory_item(request):
     try:
