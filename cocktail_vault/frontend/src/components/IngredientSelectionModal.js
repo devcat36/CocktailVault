@@ -42,23 +42,53 @@ function IngredientSelectionModal({ onClose, inventory }) {
     [inventorySet, setInventorySet, token]
   );
 
+  const [searchResultSet, setSearchResultSet] = useState(new Set());
+  const [isSearchEmpty, setIsSearchEmpty] = useState(true);
+  const onSearchInputChange = useCallback(
+    (term) => {
+      if (term.trim() === "") {
+        setIsSearchEmpty(true);
+        return;
+      }
+      setIsSearchEmpty(false);
+      const termRegex = new RegExp(term, "i");
+      const results = new Set();
+      ingredients.forEach((ingredient) => {
+        if (
+          termRegex.test(ingredient.name) ||
+          termRegex.test(ingredient.kind)
+        ) {
+          results.add(ingredient.id);
+        }
+      });
+      setSearchResultSet(results);
+    },
+    [ingredients, setSearchResultSet, setIsSearchEmpty]
+  );
+
   return (
     <div className="IngredientSelectionModal">
       <div className="IngredientSelectionModal-content">
         {ingredients && (
           <>
-            <SearchBar placeholder="Search Ingredients.." />
+            <SearchBar
+              placeholder="Search Ingredients.."
+              onChange={(event) => onSearchInputChange(event.target.value)}
+            />
             <span className="IngredientSelectionModal-title">Ingredients</span>
             <ul className="IngredientSelectionModal-list">
-              {ingredients.map((ingredient) => (
-                <IngredientItem
-                  ingredient={ingredient}
-                  have={inventorySet.has(ingredient.id)}
-                  onAddItem={() => onAddItem(ingredient.id)}
-                  onRemoveItem={() => onRemoveItem(ingredient.id)}
-                  key={ingredient.id}
-                />
-              ))}
+              {ingredients.map(
+                (ingredient) =>
+                  (isSearchEmpty || searchResultSet.has(ingredient.id)) && (
+                    <IngredientItem
+                      ingredient={ingredient}
+                      have={inventorySet.has(ingredient.id)}
+                      onAddItem={() => onAddItem(ingredient.id)}
+                      onRemoveItem={() => onRemoveItem(ingredient.id)}
+                      key={ingredient.id}
+                    />
+                  )
+              )}
             </ul>
             <button onClick={onClose}>Done</button>
           </>
