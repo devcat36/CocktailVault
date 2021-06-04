@@ -16,44 +16,54 @@ function Inventory() {
   const { data: inventory, refresh: refreshInventory } = useApi(api_url, true);
 
   const token = useToken();
+
   const [waitingIconIngredientSet, setWatingIconIngredientSet] = useState(
     new Set()
   );
   const waitingIconIngredientSetRef = useRef(new Set());
-  const onRemoveItem = useCallback(
-    async (id) => {
+
+  const addIngredientToWaitingIconIngredientSet = useCallback(
+    (id) => {
       waitingIconIngredientSetRef.current.add(id);
       setWatingIconIngredientSet(new Set(waitingIconIngredientSetRef.current));
+    },
+    [waitingIconIngredientSetRef, setWatingIconIngredientSet]
+  );
+
+  const removeIngredientFromWaitingIconIngredientSet = useCallback(
+    (id) => {
+      waitingIconIngredientSetRef.current.delete(id);
+      setWatingIconIngredientSet(new Set(waitingIconIngredientSetRef.current));
+    },
+    [waitingIconIngredientSetRef, setWatingIconIngredientSet]
+  );
+
+  const clearWaitingIconIngredientSet = useCallback(() => {
+    waitingIconIngredientSetRef.current = new Set();
+    setWatingIconIngredientSet(new Set());
+  }, [waitingIconIngredientSetRef, setWatingIconIngredientSet]);
+
+  const onRemoveItem = useCallback(
+    async (id) => {
+      addIngredientToWaitingIconIngredientSet(id);
       const result = await removeIngredient(id, token);
       if (result === "success") refreshInventory();
-      else {
-        waitingIconIngredientSetRef.current.delete(id);
-        setWatingIconIngredientSet(
-          new Set(waitingIconIngredientSetRef.current)
-        );
-      }
+      else removeIngredientFromWaitingIconIngredientSet(id);
     },
     [
       token,
       refreshInventory,
-      waitingIconIngredientSet,
-      setWatingIconIngredientSet,
-      waitingIconIngredientSetRef,
+      addIngredientToWaitingIconIngredientSet,
+      removeIngredientFromWaitingIconIngredientSet,
     ]
   );
 
   const [isModalShown, setIsModalShown] = useState(false);
   const onModalClose = useCallback(() => {
     setIsModalShown(false);
-    waitingIconIngredientSetRef.current = new Set();
-    setWatingIconIngredientSet(new Set());
+    clearWaitingIconIngredientSet();
     refreshInventory();
-  }, [
-    refreshInventory,
-    setIsModalShown,
-    waitingIconIngredientSetRef,
-    setWatingIconIngredientSet,
-  ]);
+  }, [refreshInventory, setIsModalShown, clearWaitingIconIngredientSet]);
 
   return (
     <div className="Inventory">
