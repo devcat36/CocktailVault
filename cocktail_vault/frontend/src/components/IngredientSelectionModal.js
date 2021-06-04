@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useApi } from "../hooks/use-api";
 import { useToken } from "../hooks/use-token";
 import { addIngredient, removeIngredient } from "../api";
@@ -13,33 +13,35 @@ function IngredientSelectionModal({ onClose, inventory }) {
   const [inventorySet, setInventorySet] = useState(
     new Set(inventory.map((item) => item.id))
   );
+  const inventorySetRef = useRef(new Set(inventory.map((item) => item.id)));
 
   const token = useToken();
 
   const onAddItem = useCallback(
     async (id) => {
-      const originalInventorySet = inventorySet;
-      setInventorySet(new Set([...inventorySet, id]));
+      inventorySetRef.current.add(id);
+      setInventorySet(new Set(inventorySetRef.current));
+      console.log(inventorySet);
       const result = await addIngredient(id, token);
       if (result === "fail") {
-        setInventorySet(originalInventorySet);
+        inventorySetRef.current.delete(id);
+        setInventorySet(new Set(inventorySetRef.current));
       }
     },
-    [inventorySet, setInventorySet, token]
+    [inventorySet, setInventorySet, token, inventorySetRef]
   );
 
   const onRemoveItem = useCallback(
     async (id) => {
-      const originalInventorySet = inventorySet;
-      const newInventorySet = new Set([...inventorySet]);
-      newInventorySet.delete(id);
-      setInventorySet(newInventorySet);
+      inventorySetRef.current.delete(id);
+      setInventorySet(new Set(inventorySetRef.current));
       const result = await removeIngredient(id, token);
       if (result === "fail") {
-        setInventorySet(originalInventorySet);
+        inventorySetRef.current.add(id);
+        setInventorySet(new Set(inventorySetRef.current));
       }
     },
-    [inventorySet, setInventorySet, token]
+    [inventorySet, setInventorySet, token, inventorySetRef]
   );
 
   const [searchResultSet, setSearchResultSet] = useState(new Set());
