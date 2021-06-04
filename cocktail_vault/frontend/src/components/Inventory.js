@@ -22,11 +22,15 @@ function Inventory() {
   const onRemoveItem = useCallback(
     async (id) => {
       awaitingRemovalIngredientSetRef.current.add(id);
-      setAwaitingRemovalIngredientSet(awaitingRemovalIngredientSetRef.current);
+      setAwaitingRemovalIngredientSet(
+        new Set(awaitingRemovalIngredientSetRef.current)
+      );
       const result = await removeIngredient(id, token);
       if (result === "success") refreshInventory();
       awaitingRemovalIngredientSetRef.current.delete(id);
-      setAwaitingRemovalIngredientSet(awaitingRemovalIngredientSetRef.current);
+      setAwaitingRemovalIngredientSet(
+        new Set(awaitingRemovalIngredientSetRef.current)
+      );
     },
     [
       token,
