@@ -16,36 +16,44 @@ function Inventory() {
   const { data: inventory, refresh: refreshInventory } = useApi(api_url, true);
 
   const token = useToken();
-  const [awaitingRemovalIngredientSet, setAwaitingRemovalIngredientSet] =
-    useState(new Set());
-  const awaitingRemovalIngredientSetRef = useRef(new Set());
+  const [waitingIconIngredientSet, setWatingIconIngredientSet] = useState(
+    new Set()
+  );
+  const waitingIconIngredientSetRef = useRef(new Set());
   const onRemoveItem = useCallback(
     async (id) => {
-      awaitingRemovalIngredientSetRef.current.add(id);
-      setAwaitingRemovalIngredientSet(
-        new Set(awaitingRemovalIngredientSetRef.current)
-      );
+      waitingIconIngredientSetRef.current.add(id);
+      setWatingIconIngredientSet(new Set(waitingIconIngredientSetRef.current));
       const result = await removeIngredient(id, token);
       if (result === "success") refreshInventory();
-      awaitingRemovalIngredientSetRef.current.delete(id);
-      setAwaitingRemovalIngredientSet(
-        new Set(awaitingRemovalIngredientSetRef.current)
-      );
+      else {
+        waitingIconIngredientSetRef.current.delete(id);
+        setWatingIconIngredientSet(
+          new Set(waitingIconIngredientSetRef.current)
+        );
+      }
     },
     [
       token,
       refreshInventory,
-      awaitingRemovalIngredientSet,
-      setAwaitingRemovalIngredientSet,
-      awaitingRemovalIngredientSetRef,
+      waitingIconIngredientSet,
+      setWatingIconIngredientSet,
+      waitingIconIngredientSetRef,
     ]
   );
 
   const [isModalShown, setIsModalShown] = useState(false);
   const onModalClose = useCallback(() => {
     setIsModalShown(false);
+    waitingIconIngredientSetRef.current = new Set();
+    setWatingIconIngredientSet(new Set());
     refreshInventory();
-  }, [refreshInventory, setIsModalShown]);
+  }, [
+    refreshInventory,
+    setIsModalShown,
+    waitingIconIngredientSetRef,
+    setWatingIconIngredientSet,
+  ]);
 
   return (
     <div className="Inventory">
@@ -59,7 +67,7 @@ function Inventory() {
               <InventoryItem
                 ingredient={ingredient}
                 onRemoveItem={() => onRemoveItem(ingredient.id)}
-                removing={awaitingRemovalIngredientSet.has(ingredient.id)}
+                removing={waitingIconIngredientSet.has(ingredient.id)}
                 key={ingredient.id}
               />
             ))}
