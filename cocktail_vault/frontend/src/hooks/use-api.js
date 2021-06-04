@@ -20,10 +20,11 @@ export const useApi = (url, isProtected) => {
           audience,
           Authorization: `Bearer ${accessToken}`,
         };
-        const res = await fetch(url, {
-          headers: isProtected ? authHeader : null,
-        });
-        console.log(res);
+        const res = isProtected
+          ? await fetch(url, {
+              headers: authHeader,
+            })
+          : await fetch(url);
         setState({
           ...state,
           data: await res.json(),
