@@ -1,6 +1,7 @@
 import React from "react";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import { ingredientToString } from "../utils";
 import "./IngredientItem.css";
 
 function IngredientItem({ ingredient, have, onAddItem, onRemoveItem }) {
@@ -8,9 +9,7 @@ function IngredientItem({ ingredient, have, onAddItem, onRemoveItem }) {
     <li className="IngredientItem">
       <img src={ingredient.image} alt={ingredient.name} />
       <div className="IngredientItem-name">
-        <span>
-          {ingredient.name + (ingredient.hasKind ? `(${ingredient.kind})` : "")}
-        </span>
+        <span>{ingredientToString(ingredient)}</span>
       </div>
       <div className="InventoryItem-removeButton">
         {have ? (

@@ -1,4 +1,5 @@
 import React from "react";
+import { ingredientToString } from "../utils";
 import "./ItemCard.css";
 
 const getingredientsHave = (ingredients, inventory) => {
@@ -31,11 +32,7 @@ function ItemCard({ cocktail, showPossession, inventory }) {
           <div className="ItemCard-ingredients">
             ✓{" "}
             {getingredientsHave(cocktail.ingredients, inventory)
-              .map(
-                (ingredient) =>
-                  ingredient.name +
-                  (ingredient.hasKind ? `(${ingredient.kind})` : "")
-              )
+              .map((ingredient) => ingredientToString(ingredient))
               .join(", ")}
           </div>
         )}
@@ -43,11 +40,7 @@ function ItemCard({ cocktail, showPossession, inventory }) {
           <div className="ItemCard-ingredients">
             ✘{" "}
             {getIngredientsNotHave(cocktail.ingredients, inventory)
-              .map(
-                (ingredient) =>
-                  ingredient.name +
-                  (ingredient.hasKind ? `(${ingredient.kind})` : "")
-              )
+              .map((ingredient) => ingredientToString(ingredient))
               .join(", ")}
           </div>
         )}
