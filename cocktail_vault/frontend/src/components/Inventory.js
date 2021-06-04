@@ -27,6 +27,11 @@ function Inventory() {
   );
 
   const [isModalShown, setIsModalShown] = useState(false);
+  const onModalClose = useCallback(() => {
+    setIsModalShown(false);
+    refreshInventory();
+  }, [refreshInventory, setIsModalShown]);
+
   return (
     <div className="Inventory">
       <Navbar />
@@ -54,7 +59,7 @@ function Inventory() {
           {isModalShown && (
             <IngredientSelectionModal
               inventory={inventory}
-              onClose={() => setIsModalShown(false)}
+              onClose={onModalClose}
             />
           )}
         </>
