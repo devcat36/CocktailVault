@@ -25,18 +25,20 @@ def create_user(username):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def search_recipes(request):
+    items_per_page = 20
     try:
         term = request.GET['term']
-        page = request.GET['page']
+        page = int(request.GET['page'])
     except:
         raise APIException('Bad Request')
-    items_per_page = 20
     if term == '':
         search_result = Cocktail.objects.all().order_by('name')
     else:
         search_result = Cocktail.objects.filter(name__contains=term).annotate(
             search_index=StrIndex('name', Value(term))).order_by('search_index')
     paginated_results = Paginator(search_result, items_per_page)
+    if not 1 <= page <= paginated_results.num_pages:
+        return JsonResponse('Page Out of Range', safe=False)
     requested_page = paginated_results.page(page).object_list
     response = [{
         **model_to_dict(cocktail),
