@@ -1,8 +1,12 @@
+from django.core import paginator
 from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from django.forms.models import model_to_dict
 from rest_framework.exceptions import APIException
+from django.core.paginator import Paginator
+from django.db.models import Value
+from django.db.models.functions import StrIndex
 from .models import *
 
 
@@ -23,13 +27,21 @@ def create_user(username):
 def search_recipes(request):
     try:
         term = request.GET['term']
+        page = request.GET['page']
     except:
         raise APIException('Bad Request')
-    search_result = Cocktail.objects.filter(name__contains=term)
+    items_per_page = 20
+    if term == '':
+        search_result = Cocktail.objects.all().order_by('name')
+    else:
+        search_result = Cocktail.objects.filter(name__contains=term).annotate(
+            search_index=StrIndex('name', Value(term))).order_by('search_index')
+    paginated_results = Paginator(search_result, items_per_page)
+    requested_page = paginated_results.page(page).object_list
     response = [{
         **model_to_dict(cocktail),
-        'ingredients': get_cocktail_ingredients(cocktail)
-    } for cocktail in search_result]
+        'cocktailIngredients': get_cocktail_ingredients(cocktail)
+    } for cocktail in requested_page]
     return JsonResponse(response, safe=False)
 
 
@@ -46,7 +58,7 @@ def get_cocktail(request):
         raise APIException('Resource Not Found')
     response = {
         **model_to_dict(cocktail),
-        'ingredients': get_cocktail_ingredients(cocktail)
+        'cocktailIngredients': get_cocktail_ingredients(cocktail)
     }
     return JsonResponse(response)
 
