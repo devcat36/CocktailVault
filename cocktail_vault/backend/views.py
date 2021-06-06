@@ -1,5 +1,4 @@
-from django.core import paginator
-from django.http import JsonResponse
+from django.http import JsonResponse, response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from django.forms.models import model_to_dict
@@ -7,7 +6,7 @@ from rest_framework.exceptions import APIException
 from django.core.paginator import Paginator
 from django.db.models import Value
 from django.db.models.functions import StrIndex
-import json
+import random
 from .models import *
 
 
@@ -171,6 +170,26 @@ def get_inventory(request):
     response = [model_to_dict(ingredient) for ingredient in inventory.all()]
     return JsonResponse(response, safe=False)
 
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_random_cocktails(request):
+    default_amount = 4
+    max_amount = 10
+    try:
+        if 'amount' in request.GET:
+            amount = int(request.GET['amount'])
+        else:
+            amount = default_amount
+    except:
+        raise APIException()    
+    if not 0 < amount <= max_amount:
+        raise APIException('Amount Out of Range')
+    cocktails = list(Cocktail.objects.all())
+    selected = random.sample(cocktails, amount)
+    response = [model_to_dict(cocktail) for cocktail in selected]
+    return JsonResponse(response, safe=False)
+     
 
 @api_view(['POST'])
 def add_inventory_item(request):
