@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { ingredientToString } from "../utils";
 import "./ItemCard.css";
 
 function ItemCard({ cocktail, lastItemRef }) {
+  const history = useHistory();
   let descriptionSection =
     "possessed" in cocktail ? (
       <>
@@ -44,7 +46,11 @@ function ItemCard({ cocktail, lastItemRef }) {
       </div>
     );
   return (
-    <div className="ItemCard" ref={lastItemRef}>
+    <div
+      className="ItemCard"
+      ref={lastItemRef}
+      onClick={() => history.push(`/recipe/${cocktail.id}`)}
+    >
       <img
         src={`http://172.30.1.201:9000/resize?width=200&file=cocktails/${cocktail.id}/Image_1.jpg`}
         alt={cocktail.name}
