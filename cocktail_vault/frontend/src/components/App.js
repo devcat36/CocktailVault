@@ -15,7 +15,7 @@ function App() {
         <Switch>
         <Route path='/explore'><ExplorePage /></Route>
         <Route path='/inventory'><Inventory /></Route>
-        <Route path='/recipe'><CocktailDetailsPage /></Route>
+        <Route path='/recipe/:cocktailId'><CocktailDetailsPage /></Route>
         <Route path='/'><MainPage /></Route>
         </Switch>
       </Router>
