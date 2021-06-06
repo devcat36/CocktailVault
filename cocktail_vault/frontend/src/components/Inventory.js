@@ -64,7 +64,6 @@ function Inventory() {
     clearWaitingIconIngredientSet();
     refreshInventory();
   }, [refreshInventory, setIsModalShown, clearWaitingIconIngredientSet]);
-  console.log(inventory, token);
   return (
     <div className="Inventory">
       <Navbar />
