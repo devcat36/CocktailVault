@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { useToken } from "../hooks/use-token";
 import { searchRecipes, searchRecipesWithPossession } from "../api";
@@ -10,8 +11,9 @@ import "./ExplorePage.css";
 const MAX_PAGES = 1000;
 
 function ExplorePage() {
+  const { term: initialTerm } = useParams();
   const [searchResult, setSearchResult] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(initialTerm ? initialTerm : "");
   const { ref: lastItemRef, entry: lastItemEntry } = useInView();
   const [page, setPage] = useState(1);
   const numPages = useRef(MAX_PAGES);

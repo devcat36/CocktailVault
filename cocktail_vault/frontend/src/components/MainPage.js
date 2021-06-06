@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import RecommendedCard from "./RecommendedCard";
@@ -9,6 +10,7 @@ const sample_title = "Kamikaze Cocktail";
 const sample_image = "https://picsum.photos/400";
 
 function MainPage() {
+  const history = useHistory();
   return (
     <>
       <div
@@ -20,7 +22,10 @@ function MainPage() {
           <div className="MainPage-coverText">
             All Your Favorite Drinks Right In Here!
           </div>
-          <SearchBar placeholder="Search Recipes.." />
+          <SearchBar
+            placeholder="Search Recipes.."
+            onEnter={(event) => history.push(`/explore/${event.target.value}`)}
+          />
         </div>
       </div>
       <div className="MainPage-bottom">

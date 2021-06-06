@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-        <Route path='/explore'><ExplorePage /></Route>
+        <Route path='/explore/:term?'><ExplorePage /></Route>
         <Route path='/inventory'><Inventory /></Route>
         <Route path='/recipe/:cocktailId'><CocktailDetailsPage /></Route>
         <Route path='/'><MainPage /></Route>
