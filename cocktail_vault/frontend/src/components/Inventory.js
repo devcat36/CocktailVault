@@ -70,7 +70,7 @@ function Inventory() {
       <Navbar />
       <h2>Your Inventory</h2>
       <hr />
-      {inventory && (
+      {Array.isArray(inventory) && (
         <>
           <ul className="Inventory-list">
             {inventory.map((ingredient) => (
