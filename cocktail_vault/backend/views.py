@@ -23,6 +23,15 @@ def create_user(username):
     record.save()
 
 
+def get_possessions(cocktail_ingredients, inventory):
+    possessed = cocktail_ingredients.filter(ingredient__in=inventory)
+    not_posssessed = cocktail_ingredients.difference(possessed)
+    return {
+        'possessed': [cocktail_ingredient.ingredient.id for cocktail_ingredient in possessed],
+        'not_possessed': [cocktail_ingredient.ingredient.id for cocktail_ingredient in not_posssessed]
+    }
+
+
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def search_recipes(request):
@@ -71,14 +80,6 @@ def search_recipes_with_possessions(request):
 
     inventory = User.objects.get(username=username).inventory.all()
 
-    def get_possessions(cocktail_ingredients, inventory):
-        possessed = cocktail_ingredients.filter(ingredient__in=inventory)
-        not_posssessed = cocktail_ingredients.difference(possessed)
-        return {
-            'possessed': [cocktail_ingredient.ingredient.id for cocktail_ingredient in possessed],
-            'not_possessed': [cocktail_ingredient.ingredient.id for cocktail_ingredient in not_posssessed]
-        }
-
     search_result_list = []
     for cocktail in search_result:
         cocktail_ingredients = CocktailIngredient.objects.filter(
@@ -115,7 +116,37 @@ def get_cocktail(request):
         raise APIException('Resource Not Found')
     response = {
         **model_to_dict(cocktail),
-        'cocktailIngredients': get_cocktail_ingredients(cocktail)
+        'cocktailIngredients': get_cocktail_ingredients(cocktail),
+    }
+    return JsonResponse(response)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_cocktail_with_possessions(request):
+    try:
+        cocktail_id = request.GET['id']
+    except:
+        raise APIException('Bad Request')
+    try:
+        cocktail = Cocktail.objects.get(id=cocktail_id)
+    except:
+        raise APIException('Resource Not Found')
+    try:
+        username = request._user.username
+    except:
+        raise APIException()
+    if not User.objects.filter(username=username).exists():
+        create_user(username)
+    cocktail_ingredients = CocktailIngredient.objects.filter(cocktail=cocktail)
+    inventory = User.objects.get(username=username).inventory.all()
+    response = {
+        **model_to_dict(cocktail),
+        'cocktailIngredients': [{
+            'ingredient': model_to_dict(cocktail_ingredient.ingredient),
+            'amount': cocktail_ingredient.amount
+        } for cocktail_ingredient in cocktail_ingredients],
+        **get_possessions(cocktail_ingredients, inventory)
     }
     return JsonResponse(response)
 
