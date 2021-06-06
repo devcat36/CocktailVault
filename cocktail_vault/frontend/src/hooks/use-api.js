@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const useApi = (url, isProtected) => {
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
   const [state, setState] = useState({
     error: null,
     loading: true,
@@ -15,14 +15,14 @@ export const useApi = (url, isProtected) => {
   useEffect(() => {
     (async () => {
       try {
-        const accessToken = (isProtected && isAuthenticated)
+        const accessToken = isProtected
           ? await getAccessTokenSilently({ audience })
           : null;
         const authHeader = {
           audience,
           Authorization: `Bearer ${accessToken}`,
         };
-        const res = (isProtected && isAuthenticated)
+        const res = isProtected
           ? await fetch(apiUrl, {
               headers: authHeader,
             })
