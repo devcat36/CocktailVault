@@ -174,3 +174,6 @@ bower_components
 psd
 thumb
 sketch
+
+/images
+dump.json
