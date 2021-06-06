@@ -39,6 +39,7 @@ function ExplorePage() {
     if (page == 1 || page > numPages.current) return;
     if (requestedPage.current === page) return;
     requestedPage.current = page;
+    const requestSequence = ++requestCount.current;
     try {
       const result = await (token
         ? searchRecipesWithPossession(searchTerm, page, token)
@@ -47,7 +48,7 @@ function ExplorePage() {
         numPages.current = page - 1;
         return;
       } else if (!Array.isArray(result)) throw result;
-      setSearchResult(searchResult.concat(result));
+      if (requestCount.current === requestSequence) setSearchResult(searchResult.concat(result));
     } catch (error) {
       console.log(error);
     }
