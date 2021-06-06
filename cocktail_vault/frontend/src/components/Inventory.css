@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 0;
   margin: 0 9% 29px;
-  max-height: 800px;
+  max-height: min(70vh, 800px);
   overflow: auto;
 }
 
