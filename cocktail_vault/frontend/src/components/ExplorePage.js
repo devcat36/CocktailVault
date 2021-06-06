@@ -17,6 +17,7 @@ function ExplorePage() {
   const numPages = useRef(MAX_PAGES);
   const token = useToken();
   const requestCount = useRef(0);
+  const requestedPage = useRef(0);
 
   useEffect(async () => {
     const requestSequence = ++requestCount.current;
@@ -34,6 +35,8 @@ function ExplorePage() {
 
   useEffect(async () => {
     if (page == 1 || page > numPages.current) return;
+    if (requestedPage.current === page) return;
+    requestedPage.current = page;
     try {
       const result = await (token
         ? searchRecipesWithPossession(searchTerm, page, token)
@@ -46,6 +49,7 @@ function ExplorePage() {
     } catch (error) {
       console.log(error);
     }
+    requestedPage.current = 0;
   }, [page, token]);
 
   useEffect(() => {
