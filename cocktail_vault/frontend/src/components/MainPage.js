@@ -5,12 +5,14 @@ import SearchBar from "./SearchBar";
 import RecommendedCard from "./RecommendedCard";
 import "./MainPage.css";
 import coverImage from "../media/cover_image.jpg";
-
-const sample_title = "Kamikaze Cocktail";
-const sample_image = "https://picsum.photos/400";
+import { useApi } from "../hooks/use-api";
 
 function MainPage() {
   const history = useHistory();
+  const { data: cocktails } = useApi(
+    "http://localhost:8000/api/get_random_cocktails",
+    false
+  );
   return (
     <>
       <div
@@ -31,10 +33,15 @@ function MainPage() {
       <div className="MainPage-bottom">
         <h2>Our Selections</h2>
         <ul className="MainPage-recommended">
-          <RecommendedCard image={sample_image} title={sample_title} />
-          <RecommendedCard image={sample_image} title={sample_title} />
-          <RecommendedCard image={sample_image} title={sample_title} />
-          <RecommendedCard image={sample_image} title={sample_title} />
+          {cocktails &&
+            cocktails.map((cocktail) => (
+              <RecommendedCard
+                image={`http://172.30.1.201:9000/resize?width=238&file=cocktails/${cocktail.id}/Image_1.jpg`}
+                title={cocktail.name}
+                onClick={() => history.push(`/recipe/${cocktail.id}`)}
+                key={cocktail.id}
+              />
+            ))}
         </ul>
       </div>
     </>

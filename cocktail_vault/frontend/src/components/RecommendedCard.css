@@ -7,6 +7,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 .RecommendedCard-title {
@@ -24,4 +25,5 @@
   font-weight: 200;
   font-size: 30px;
   color: #edddd1;
+  line-height: 100%;  
 }
