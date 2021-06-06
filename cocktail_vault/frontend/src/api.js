@@ -56,3 +56,16 @@ export async function searchRecipes(term, page) {
   const parsedResponse = await response.json();
   return parsedResponse;
 }
+
+export async function searchRecipesWithPossession(term, page, token) {
+  const url = "http://localhost:8000/api/search_recipes_with_possessions";
+  const params = new URLSearchParams({ term, page });
+  const authHeader = {
+    audience: "cocktail_vault",
+    Authorization: `Bearer ${token}`,
+  };
+  const queryUrl = url + "?" + params.toString();
+  const response = await fetch(queryUrl, { headers: authHeader });
+  const parsedResponse = await response.json();
+  return parsedResponse;
+}

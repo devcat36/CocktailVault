@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useApi } from "../hooks/use-api";
-import { searchRecipes } from "../api";
+import { useToken } from "../hooks/use-token";
+import { searchRecipes, searchRecipesWithPossession } from "../api";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import ItemCard from "./ItemCard";
@@ -15,22 +15,29 @@ function ExplorePage() {
   const { ref: lastItemRef, entry: lastItemEntry } = useInView();
   const [page, setPage] = useState(1);
   const numPages = useRef(MAX_PAGES);
+  const token = useToken();
+  const requestCount = useRef(0);
 
   useEffect(async () => {
+    const requestSequence = ++requestCount.current;
     setPage(1);
     try {
-      const result = await searchRecipes(searchTerm, 1);
+      const result = await (token
+        ? searchRecipesWithPossession(searchTerm, 1, token)
+        : searchRecipes(searchTerm, 1));
       if (!Array.isArray(result)) throw result;
-      setSearchResult(result);
+      if (requestCount.current === requestSequence) setSearchResult(result);
     } catch (error) {
       console.log(error);
     }
-  }, [searchTerm]);
+  }, [searchTerm, token]);
 
   useEffect(async () => {
     if (page == 1 || page > numPages.current) return;
     try {
-      const result = await searchRecipes(searchTerm, page);
+      const result = await (token
+        ? searchRecipesWithPossession(searchTerm, page, token)
+        : searchRecipes(searchTerm, page));
       if (result === "Page Out of Range") {
         numPages.current = page - 1;
         return;
@@ -39,14 +46,11 @@ function ExplorePage() {
     } catch (error) {
       console.log(error);
     }
-  }, [page]);
+  }, [page, token]);
 
   useEffect(() => {
     if (lastItemEntry && lastItemEntry.isIntersecting) setPage(page + 1);
   }, [lastItemEntry]);
-
-  const inventoryApiUrl = "http://localhost:8000/api/get_inventory";
-  const { data: inventory } = useApi(inventoryApiUrl, true);
 
   return (
     <div className="ExplorePage">
@@ -61,12 +65,7 @@ function ExplorePage() {
             searchResult
               .slice(0, -1)
               .map((cocktail) => (
-                <ItemCard
-                  cocktail={cocktail}
-                  showPossession={inventory !== null}
-                  inventory={inventory}
-                  key={cocktail.id}
-                />
+                <ItemCard cocktail={cocktail} key={cocktail.id} />
               ))}
           {searchResult &&
             searchResult
@@ -75,8 +74,6 @@ function ExplorePage() {
                 <ItemCard
                   lastItemRef={lastItemRef}
                   cocktail={cocktail}
-                  showPossession={inventory !== null}
-                  inventory={inventory}
                   key={cocktail.id}
                 />
               ))}

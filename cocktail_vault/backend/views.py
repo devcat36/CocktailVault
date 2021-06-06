@@ -7,6 +7,7 @@ from rest_framework.exceptions import APIException
 from django.core.paginator import Paginator
 from django.db.models import Value
 from django.db.models.functions import StrIndex
+import json
 from .models import *
 
 
@@ -44,6 +45,60 @@ def search_recipes(request):
         **model_to_dict(cocktail),
         'cocktailIngredients': get_cocktail_ingredients(cocktail)
     } for cocktail in requested_page]
+    return JsonResponse(response, safe=False)
+
+
+@api_view(['GET'])
+def search_recipes_with_possessions(request):
+    items_per_page = 20
+    try:
+        term = request.GET['term']
+        page = int(request.GET['page'])
+    except:
+        raise APIException('Bad Request')
+    try:
+        username = request._user.username
+    except:
+        raise APIException()
+    if not User.objects.filter(username=username).exists():
+        create_user(username)
+
+    if term == '':
+        search_result = Cocktail.objects.all().order_by('name')
+    else:
+        search_result = Cocktail.objects.filter(name__contains=term).annotate(
+            search_index=StrIndex('name', Value(term))).order_by('search_index')
+
+    inventory = User.objects.get(username=username).inventory.all()
+
+    def get_possessions(cocktail_ingredients, inventory):
+        possessed = cocktail_ingredients.filter(ingredient__in=inventory)
+        not_posssessed = cocktail_ingredients.difference(possessed)
+        return {
+            'possessed': [cocktail_ingredient.ingredient.id for cocktail_ingredient in possessed],
+            'not_possessed': [cocktail_ingredient.ingredient.id for cocktail_ingredient in not_posssessed]
+        }
+
+    search_result_list = []
+    for cocktail in search_result:
+        cocktail_ingredients = CocktailIngredient.objects.filter(
+            cocktail=cocktail)
+        search_result_list.append({
+            **model_to_dict(cocktail),
+            'cocktailIngredients': [{
+                'ingredient': model_to_dict(cocktail_ingredient.ingredient),
+                'amount': cocktail_ingredient.amount
+            } for cocktail_ingredient in cocktail_ingredients],
+            **get_possessions(cocktail_ingredients, inventory)
+        })
+    if(term == ''):
+        search_result_list = sorted(
+            search_result_list, key=lambda cocktail: len(cocktail['not_possessed']))
+
+    paginated_results = Paginator(search_result_list, items_per_page)
+    if not 1 <= page <= paginated_results.num_pages:
+        return JsonResponse('Page Out of Range', safe=False)
+    response = paginated_results.page(page).object_list
     return JsonResponse(response, safe=False)
 
 

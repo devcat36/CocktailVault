@@ -2,32 +2,15 @@ import React from "react";
 import { ingredientToString } from "../utils";
 import "./ItemCard.css";
 
-const getIngredientsHave = (ingredients, inventory) => {
-  return ingredients.filter((ingredient) => {
-    if (ingredient.hasKind)
-      return inventory.some(
-        (item) => item.name === ingredient.name && item.kind === ingredient.kind
-      );
-    else return inventory.some((item) => item.name === ingredient.name);
-  });
-};
-
-const getIngredientsNotHave = (ingredients, inventory) => {
-  return ingredients.filter((ingredient) => {
-    if (ingredient.hasKind)
-      return !inventory.some(
-        (item) => item.name === ingredient.name && item.kind === ingredient.kind
-      );
-    else return !inventory.some((item) => item.name === ingredient.name);
-  });
-};
-
-function ItemCard({ cocktail, showPossession, inventory, lastItemRef }) {
-  let descriptionSection = showPossession ? (
+function ItemCard({ cocktail, lastItemRef }) {
+  let descriptionSection = ("possessed" in cocktail) ? (
     <>
       <div className="ItemCard-ingredients">
         ✓{" "}
-        {getIngredientsHave(cocktail.cocktailIngredients, inventory)
+        {cocktail.cocktailIngredients
+          .filter((cocktailIngredient) =>
+            cocktail.possessed.includes(cocktailIngredient.ingredient.id)
+          )
           .map((cocktailIngredient) =>
             ingredientToString(cocktailIngredient.ingredient)
           )
@@ -35,7 +18,10 @@ function ItemCard({ cocktail, showPossession, inventory, lastItemRef }) {
       </div>
       <div className="ItemCard-ingredients">
         ✘{" "}
-        {getIngredientsNotHave(cocktail.cocktailIngredients, inventory)
+        {cocktail.cocktailIngredients
+          .filter((cocktailIngredient) =>
+            !cocktail.possessed.includes(cocktailIngredient.ingredient.id)
+          )
           .map((cocktailIngredient) =>
             ingredientToString(cocktailIngredient.ingredient)
           )
