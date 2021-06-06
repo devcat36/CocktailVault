@@ -52,7 +52,7 @@ function ItemCard({ cocktail, lastItemRef }) {
       onClick={() => history.push(`/recipe/${cocktail.id}`)}
     >
       <img
-        src={`http://172.30.1.201:9000/resize?width=200&file=cocktails/${cocktail.id}/Image_1.jpg`}
+        src={`https://cdn.cocktailvault.net/resize?width=200&file=cocktails/${cocktail.id}/Image_1.jpg`}
         alt={cocktail.name}
       />
       <div className="ItemCard-details">

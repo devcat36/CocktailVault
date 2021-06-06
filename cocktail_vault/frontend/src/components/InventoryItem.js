@@ -8,7 +8,7 @@ function InventoryItem({ ingredient, onRemoveItem, removing }) {
   return (
     <li className="InventoryItem">
       <img
-        src={`http://172.30.1.201:9000/resize?width=70&file=ingredients/${ingredient.id}/Image_1.jpg`}
+        src={`https://cdn.cocktailvault.net/resize?width=70&file=ingredients/${ingredient.id}/Image_1.jpg`}
         alt={ingredient.name}
       />
       <div className="InventoryItem-name">

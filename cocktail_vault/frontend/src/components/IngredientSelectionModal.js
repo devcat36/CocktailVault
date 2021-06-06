@@ -7,7 +7,7 @@ import IngredientItem from "./IngredientItem";
 import "./IngredientSelectionModal.css";
 
 function IngredientSelectionModal({ onClose, inventory }) {
-  const api_url = "http://localhost:8000/api/get_all_ingredients";
+  const api_url = "https://cocktailvault.net/api/get_all_ingredients";
   const { data: ingredients } = useApi(api_url, false);
 
   const [inventorySet, setInventorySet] = useState(

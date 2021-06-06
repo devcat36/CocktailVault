@@ -10,7 +10,7 @@ import { useApi } from "../hooks/use-api";
 function MainPage() {
   const history = useHistory();
   const { data: cocktails } = useApi(
-    "http://localhost:8000/api/get_random_cocktails",
+    "https://cocktailvault.net/api/get_random_cocktails",
     false
   );
   return (
@@ -36,7 +36,7 @@ function MainPage() {
           {cocktails &&
             cocktails.map((cocktail) => (
               <RecommendedCard
-                image={`http://172.30.1.201:9000/resize?width=238&file=cocktails/${cocktail.id}/Image_1.jpg`}
+                image={`https://cdn.cocktailvault.net/resize?width=238&file=cocktails/${cocktail.id}/Image_1.jpg`}
                 title={cocktail.name}
                 onClick={() => history.push(`/recipe/${cocktail.id}`)}
                 key={cocktail.id}

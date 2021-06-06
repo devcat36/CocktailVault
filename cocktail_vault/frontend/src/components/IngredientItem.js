@@ -7,7 +7,7 @@ import "./IngredientItem.css";
 function IngredientItem({ ingredient, have, onAddItem, onRemoveItem }) {
   return (
     <li className="IngredientItem">
-      <img src={`http://172.30.1.201:9000/resize?width=60&file=ingredients/${ingredient.id}/Image_1.jpg`} alt={ingredient.name} />
+      <img src={`https://cdn.cocktailvault.net/resize?width=60&file=ingredients/${ingredient.id}/Image_1.jpg`} alt={ingredient.name} />
       <div className="IngredientItem-name">
         <span>{ingredientToString(ingredient)}</span>
       </div>

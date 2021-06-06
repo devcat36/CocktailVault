@@ -12,7 +12,7 @@ import "./Inventory.css";
 function Inventory() {
   const history = useHistory();
 
-  const api_url = "http://localhost:8000/api/get_inventory";
+  const api_url = "https://cocktailvault.net/api/get_inventory";
   const { data: inventory, refresh: refreshInventory } = useApi(api_url, true);
 
   const token = useToken();

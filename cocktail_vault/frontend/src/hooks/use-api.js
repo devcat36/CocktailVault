@@ -9,24 +9,24 @@ export const useApi = (url, isProtected) => {
     data: null,
   });
   const [refreshIndex, setRefreshIndex] = useState(0);
-  const [apiUrl, setApiUrl] = useState(url);
+  const [params, setParams] = useState({url, isProtected});
 
   const audience = "cocktail_vault";
   useEffect(() => {
     (async () => {
       try {
-        const accessToken = isProtected
+        const accessToken = params.isProtected
           ? await getAccessTokenSilently({ audience })
           : null;
         const authHeader = {
           audience,
           Authorization: `Bearer ${accessToken}`,
         };
-        const res = isProtected
-          ? await fetch(apiUrl, {
+        const res = params.isProtected
+          ? await fetch(params.url, {
               headers: authHeader,
             })
-          : await fetch(apiUrl);
+          : await fetch(params.url);
         setState({
           ...state,
           data: await res.json(),
@@ -41,11 +41,11 @@ export const useApi = (url, isProtected) => {
         });
       }
     })();
-  }, [refreshIndex, apiUrl]);
+  }, [refreshIndex, params]);
 
   return {
     ...state,
     refresh: () => setRefreshIndex(refreshIndex + 1),
-    setUrl : (url) => setApiUrl(url)
+    setParams : (params) => setParams(params)
   };
 };

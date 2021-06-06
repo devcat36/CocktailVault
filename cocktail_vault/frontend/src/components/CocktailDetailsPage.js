@@ -39,15 +39,23 @@ function CocktailDetailsPage() {
   const {
     loading,
     data: cocktail,
-    setUrl,
-  } = useApi(`http://localhost:8000/api/get_cocktail?id=${cocktailId}`, true);
+    setParams,
+  } = useApi(
+    `https://cocktailvault.net/api/get_cocktail?id=${cocktailId}`,
+    false
+  );
 
   useEffect(() => {
     if (isAuthenticated)
-      setUrl(
-        `http://localhost:8000/api/get_cocktail_with_possessions?id=${cocktailId}`
+      setParams(
+        `https://cocktailvault.net/api/get_cocktail_with_possessions?id=${cocktailId}`,
+        true
       );
-    else setUrl(`http://localhost:8000/api/get_cocktail?id=${cocktailId}`);
+    else
+      setParams(
+        `https://cocktailvault.net/api/get_cocktail?id=${cocktailId}`,
+        false
+      );
   }, [isAuthenticated, cocktailId]);
 
   if (cocktail)
@@ -92,7 +100,7 @@ function CocktailDetailsPage() {
           <hr />
           <div className="CocktailDetailsPage-images">
             <img
-              src={`http://172.30.1.201:9000/resize?width=300&file=cocktails/${cocktail.id}/Image_1.jpg`}
+              src={`https://cdn.cocktailvault.net/resize?width=300&file=cocktails/${cocktail.id}/Image_1.jpg`}
               alt={cocktail.name}
             />
           </div>
