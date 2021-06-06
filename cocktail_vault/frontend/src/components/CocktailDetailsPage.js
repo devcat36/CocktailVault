@@ -48,7 +48,7 @@ function CocktailDetailsPage() {
         `http://localhost:8000/api/get_cocktail_with_possessions?id=${cocktailId}`
       );
     else setUrl(`http://localhost:8000/api/get_cocktail?id=${cocktailId}`);
-  }, [isAuthenticated]);
+  }, [isAuthenticated, cocktailId]);
 
   if (cocktail)
     return (
