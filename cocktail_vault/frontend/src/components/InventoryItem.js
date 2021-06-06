@@ -7,7 +7,10 @@ import "./InventoryItem.css";
 function InventoryItem({ ingredient, onRemoveItem, removing }) {
   return (
     <li className="InventoryItem">
-      <img src={ingredient.image} alt={ingredient.name} />
+      <img
+        src={`http://172.30.1.201:9000/resize?width=70&file=ingredients/${ingredient.id}/Image_1.jpg`}
+        alt={ingredient.name}
+      />
       <div className="InventoryItem-name">
         <span>{ingredientToString(ingredient)}</span>
       </div>
