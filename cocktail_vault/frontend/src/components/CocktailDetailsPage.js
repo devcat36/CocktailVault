@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useApi } from "../hooks/use-api";
+import { useToken } from "../hooks/use-token";
+import { getCocktail, getCocktailWithPossessions } from "../api";
 import { ingredientToString } from "../utils";
 import Navbar from "./Navbar";
 import "./CocktailDetailsPage.css";
-import { useAuth0 } from "@auth0/auth0-react";
+
 
 function ListItem({ name, amount }) {
   return (
@@ -35,29 +36,23 @@ function IngredientsList({ title, cocktailIngredients }) {
 
 function CocktailDetailsPage() {
   const { cocktailId } = useParams();
-  const { isAuthenticated } = useAuth0();
-  const {
-    loading,
-    data: cocktail,
-    setParams,
-  } = useApi(
-    `https://cocktailvault.net/api/get_cocktail?id=${cocktailId}`,
-    false
-  );
+  const token = useToken();
+  const [cocktail, setCocktail] = useState(null);
 
-  useEffect(() => {
-    if (isAuthenticated)
-      setParams(
-        `https://cocktailvault.net/api/get_cocktail_with_possessions?id=${cocktailId}`,
-        true
-      );
-    else
-      setParams(
-        `https://cocktailvault.net/api/get_cocktail?id=${cocktailId}`,
-        false
-      );
-  }, [isAuthenticated, cocktailId]);
-
+  useEffect(async () => {
+    if (cocktailId === undefined) return;
+    try {
+      if (token) {
+        const response = await getCocktailWithPossessions(cocktailId, token);
+        if (response.id == cocktailId) setCocktail(response);
+      } else {
+        const response = await getCocktail(cocktailId, token);
+        if (response.id == cocktailId) setCocktail(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [token, cocktailId]);
   if (cocktail)
     return (
       <div className="CocktailDetailsPage">
@@ -107,18 +102,10 @@ function CocktailDetailsPage() {
         </div>
       </div>
     );
-  else if (loading)
-    return (
-      <div className="CocktailDetailsPage">
-        <Navbar />
-        Loading...
-      </div>
-    );
   else
     return (
       <div className="CocktailDetailsPage">
-        <Navbar />
-        Recipe not found.
+        <Navbar />{" "}
       </div>
     );
 }

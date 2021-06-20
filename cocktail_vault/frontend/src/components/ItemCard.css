@@ -5,7 +5,8 @@
   border-radius: 25px;
   box-sizing: border-box;
   padding: 18px;
-  width: 428px;
+  width: calc(min(50vw,478px) - 30px);
+  min-width: 0;
   cursor: pointer;
 }
 
@@ -13,6 +14,7 @@
   object-fit: cover;
   width: 155px;
   border-radius: 25px;
+  flex-shrink: 0;
 }
 
 .ItemCard-details {
@@ -34,4 +36,24 @@
   font-family: "Mukta";
   font-size: 20px;
   font-weight: 200;
+}
+
+@media only screen and (max-width: 768px) {
+  .ItemCard {
+    width: calc(100vw - 30px);
+  }
+
+  .ItemCard img {
+    width: min(40%,155px);
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .ItemCard-title {
+    font-weight: 300;
+    font-size: 25px;
+  }
+  .ItemCard-ingredients {
+    font-size: 18px;
+  }
 }

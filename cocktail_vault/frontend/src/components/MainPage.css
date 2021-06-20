@@ -15,12 +15,12 @@ h2 {
 
 .MainPage-searchSection {
   padding: 0;
-  position: absolute;
-  top: 266px;
+  position: relative;
+  top: 20%;
   left: 157px;
   width: 530px;
   height: 300px;
-  background-color: rgba(0, 0, 0, 0.34);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .MainPage-coverText {
@@ -42,7 +42,7 @@ h2 {
 .MainPage-recommended {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   padding: 0;
   margin: -10px -5px -10px -5px;
@@ -52,7 +52,7 @@ h2 {
   margin: 10px 5px 10px 5px;
 }
 
-@media only screen and (max-width: 1186px) {
+/* @media only screen and (max-width: 1186px) {
   .MainPage-top {
     background-size: 120%;
     height: calc(100vw * 1.2 * 0.59);
@@ -60,60 +60,66 @@ h2 {
   .MainPage-coverText {
     left: 120px;
   }
-}
+} */
 
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
   .MainPage-searchSection {
     left: 65px;
   }
-}
+} */
 
-@media only screen and (max-width: 905px) {
+/* @media only screen and (max-width: 905px) {
   .MainPage-top {
     height: 641px;
   }
-}
+} */
 
-@media only screen and (max-width: 520px) {
-  .MainPage-top {
-    background-size: 180%;
-    background-position: 70% -20%;
-    box-shadow: inset 0 0 0 150vw rgba(0, 0, 0, 0.5);
-    height: calc(100vw * 1.8 * 0.59);
-  }
-
+@media only screen and (max-width: 1024px) {
   .MainPage-searchSection {
-    width: 370px;
-    top: 200px;
     left: 0;
     right: 0;
     margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .MainPage-top {
+    background-size: 130%;
+    background-position: 70% -20%;
+    box-shadow: inset 0 0 0 150vw rgba(0, 0, 0, 0.5);
+    height: calc(100vw * 1.3 * 0.59);
+  }
+
+  .MainPage-searchSection {
+    width: 69%;
+    top: 90px;
     background-color: transparent;
   }
 
   .MainPage-coverText {
-    font-size: 33px;
-  }
-
-  .SearchBar {
-    margin-top: 30px;
-  }
-
-  .MainPage-recommended {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  .RecommendedCard {
-    width: 280px;
-    height: 280px;
+    font-size: 38px;
   }
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 590px) {
   .MainPage-top {
+    background-size: 250%;
+    background-position: 70% 60%;
     height: 470px;
+  }
+
+  .MainPage-coverText {
+    font-size: 34px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .MainPage-coverText {
+    font-size: 30px;
+  }
+
+  .MainPage-top .SearchBar {
+    width: 100%;
+    margin-top: 30px;
   }
 }

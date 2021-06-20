@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
-  height: 99px;
   border-top: 1px solid #4e4e4e;
   box-sizing: border-box;
+  padding: 10px 0;
 }
 
 .InventoryItem:first-child {
@@ -35,25 +35,30 @@
 }
 
 .InventoryItem img {
+  flex-shrink: 0;
   object-fit: cover;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   margin: auto 0 auto 23px;
 }
 
 .InventoryItem-name {
+  flex-shrink: 1;
   display: flex;
   align-items: center;
   flex-grow: 2;
   color: white;
   font-family: "Raleway";
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 300;
   margin-left: 51px;
+  overflow: hidden;
+  width: 0;
 }
 
 .InventoryItem-removeButton {
+  flex-shrink: 0;
   width: 50px;
   height: 50px;
   margin: auto 12px;
@@ -70,11 +75,16 @@
   color: #f8893a;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 425px) {
   .InventoryItem {
-    height: 90px;
+    padding: 5px 0;
+  }
+  .InventoryItem img {
+    width: 50px;
+    height: 50px;
   }
   .InventoryItem-name {
-    font-size: 25px;
+    font-size: 20px;
+    margin-left: 10px;
   }
 }

@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  margin: 0 20px 0 100px;
+  margin-right: 20px;
 }
 
 .Navbar-menu li {
@@ -32,14 +32,14 @@
   font-size: 26px;
   white-space: nowrap;
   font-weight: 300;
-  margin: 0 30px 0 30px;
+  margin: 0 15px 0 15px;
 }
 
 .Navbar-menu li:hover {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 768px) {
   .Navbar {
     flex-direction: column;
     height: fit-content;
@@ -52,5 +52,18 @@
   }
   .Navbar-menu li {
     font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .Navbar-menu {
+    margin: 0 0 10px;
+    width: 100vw;
+    justify-content: space-around;
+    box-sizing: border-box;
+  }
+  .Navbar-menu li {
+    font-size: 20px;
+    margin: 0;
   }
 }

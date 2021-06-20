@@ -8,7 +8,6 @@
   font-weight: 400;
   font-size: 48px;
   color: white;
-  margin-top: 56px;
 }
 
 .CocktailDetailsPage-ingredientsList {
@@ -38,7 +37,7 @@
   font-weight: 200;
   color: white;
   border-bottom: 1px solid #808080;
-  padding: 0 11px;
+  padding: 2px 11px;
   height: 47px;
 }
 
@@ -49,6 +48,10 @@
 .CocktailDetailsPage-list {
   padding: 0 4px;
   margin: 0;
+}
+
+.CocktailDetailsPage-list .amount {
+  flex-shrink: 0;
 }
 
 .CocktailDetailsPage-instructions {
@@ -73,7 +76,7 @@
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 425px) {
   .CocktailDetailsPage-images {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -81,5 +84,17 @@
   }
   .CocktailDetailsPage img {
     width: 100%;
+  }
+  .CocktailDetailsPage-title {
+    font-size: 38px;
+  }
+  .CocktailDetailsPage-listTitle {
+    font-size: 24px;
+  }
+  .CocktailDetailsPage-listItem {
+    font-size: 20px;
+  }
+  .CocktailDetailsPage-instructions {
+    font-size: 20px;
   }
 }

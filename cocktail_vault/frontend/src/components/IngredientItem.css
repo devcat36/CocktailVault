@@ -1,10 +1,10 @@
 .IngredientItem {
   display: flex;
   flex-direction: row;
-  height: 85px;
   border-top: 1px solid #4e4e4e;
   box-sizing: border-box;
   flex-shrink: 0;
+  padding: 10px 0;
 }
 
 .IngredientItem:first-child {
@@ -52,6 +52,7 @@
   font-weight: 300;
   margin-left: 61px;
   overflow: hidden;
+  width: 0;
 }
 
 .IngredientItem-addButton {
@@ -70,15 +71,17 @@
   color: #f8893a;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 768px) {
   .IngredientItem {
-    height: 72px;
+    padding: 5px 0;
   }
   .IngredientItem-name {
     margin-left: 10px;
-    font-size: 24px;
+    font-size: 20px;
   }
   .IngredientItem img {
     margin-left: 10px;
+    width: 50px;
+    height: 50px;
   }
 }

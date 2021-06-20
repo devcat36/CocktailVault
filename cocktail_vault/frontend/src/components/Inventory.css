@@ -3,12 +3,13 @@
   flex-direction: column;
   padding: 0;
   margin: 0 9% 29px;
-  max-height: min(70vh, 800px);
+  max-height: min(60vh, 800px);
   overflow: auto;
 }
 
 .Inventory h2 {
-  margin: 65px 0 0 97px;
+  margin: 25px 0 0 97px;
+  font-size: 32px;
 }
 
 .Inventory-buttons {
@@ -26,16 +27,13 @@
   border-radius: 10px;
   color: white;
   font-family: "Raleway";
-  font-size: 28px;
+  font-size: 24px;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 768px) {
   .Inventory h2 {
-    margin: 30px 0 0 10px;
-  }
-  .Inventory-list {
-    margin: 0 3% 29px;
+    margin-top: 0;
   }
   .Inventory-buttons {
     flex-direction: column;
@@ -43,5 +41,17 @@
   .Inventory-buttons button {
     margin: 0 auto 13px;
     width: 90%;
+    height: 65px;
+  }
+}
+
+
+@media only screen and (max-width: 425px) {
+  .Inventory h2 {
+    margin: 0 0 0 20px;
+    font-size: 26px;
+  }
+  .Inventory-list {
+    margin: 0 3% 29px;
   }
 }

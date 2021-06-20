@@ -69,3 +69,25 @@ export async function searchRecipesWithPossession(term, page, token) {
   const parsedResponse = await response.json();
   return parsedResponse;
 }
+
+export async function getCocktail(id) {
+  const url = "https://cocktailvault.net/api/get_cocktail";
+  const params = new URLSearchParams({ id });
+  const queryUrl = url + "?" + params.toString();
+  const response = await fetch(queryUrl);
+  const parsedResponse = await response.json();
+  return parsedResponse;
+}
+
+export async function getCocktailWithPossessions(id, token) {
+  const url = "https://cocktailvault.net/api/get_cocktail_with_possessions";
+  const params = new URLSearchParams({ id });
+  const authHeader = {
+    audience: "cocktail_vault",
+    Authorization: `Bearer ${token}`,
+  };
+  const queryUrl = url + "?" + params.toString();
+  const response = await fetch(queryUrl, { headers: authHeader });
+  const parsedResponse = await response.json();
+  return parsedResponse;
+}

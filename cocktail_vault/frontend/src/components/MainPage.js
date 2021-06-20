@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import RecommendedCard from "./RecommendedCard";
 import "./MainPage.css";
-import coverImage from "../media/cover_image.jpg";
 import { useApi } from "../hooks/use-api";
 
 function MainPage() {
@@ -17,7 +16,9 @@ function MainPage() {
     <>
       <div
         className="MainPage-top"
-        style={{ backgroundImage: `url(${coverImage})` }}
+        style={{
+          backgroundImage: `url(https://cdn.cocktailvault.net/resize?width=1280&file=cover_image.jpg)`,
+        }}
       >
         <Navbar />
         <div className="MainPage-searchSection">
