@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./cocktail_vault/frontend/src/index.js --output-path ./cocktail_vault/frontend/static/frontend/",
+    "dev": "webpack --mode=development ./cocktail_vault/frontend/src/index.js --output-path ./cocktail_vault/frontend/static/frontend/",
+    "build": "webpack --mode=production ./cocktail_vault/frontend/src/index.js --output-path ./cocktail_vault/frontend/static/frontend/",
     "watch": "watch 'npm run dev' ./cocktail_vault/frontend/src/"
   },
   "keywords": [],

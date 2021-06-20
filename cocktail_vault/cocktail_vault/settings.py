@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+HOSTNAME = 'cocktailvault.net'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*6ta1etu0brdwr*4l5t^u4afyo4$4mmlh5#*a1_!grjkinpy&y'
+with open('/etc/secret_key') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -155,3 +158,10 @@ JWT_AUTH = {
     'JWT_ISSUER': 'https://devcat.eu.auth0.com/',
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
+
+SECURE_HSTS_SECONDS=True
+SECURE_SSL_REDIRECT=True
+CSRF_COOKIE_SECURE=True
+SECURE_HSTS_INCLUDE_SUBDOMAINS=True
+SESSION_COOKIE_SECURE=True
+SECURE_HSTS_PRELOAD=True
