@@ -175,7 +175,7 @@ psd
 thumb
 sketch
 
-/images
+#/images
 dump.json
 
 cover_image.jpg
